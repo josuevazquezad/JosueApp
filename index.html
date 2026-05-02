@@ -26,26 +26,26 @@ input,select,textarea{font-family:'DM Sans',sans-serif;color-scheme:dark;-webkit
 .tab{flex:1;padding:9px 2px;font-size:11px;font-weight:600;border:none;border-bottom:2px solid transparent;background:transparent;color:#555;cursor:pointer;white-space:nowrap;font-family:'DM Sans',sans-serif;transition:color .15s;}
 .tab.on{color:#c8a96e;border-bottom-color:#c8a96e;}
 #content{padding:16px;}
-/* Section head */
 .sh{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:1.5px;color:#f0ece4;opacity:.45;margin-bottom:8px;}
-/* Stat grid */
 .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px;}
 .stat-box{background:#161616;border:1px solid #1e1e1e;border-radius:12px;padding:11px 6px;text-align:center;}
 .stat-n{font-family:'Bebas Neue',sans-serif;font-size:28px;line-height:1;}
 .stat-l{font-size:9px;color:#444;letter-spacing:.5px;margin-top:2px;}
-/* Card */
+/* Task card — now vertical for subtasks */
+.task-card{background:#161616;border:1px solid #1e1e1e;border-radius:12px;padding:12px 13px;margin-bottom:7px;border-left:3px solid var(--c);}
+.task-card-top{display:flex;align-items:center;gap:11px;cursor:pointer;}
+.task-subtasks{padding:8px 0 2px 31px;border-top:1px solid #1e1e1e;margin-top:10px;}
+.task-sub-row{display:flex;align-items:center;gap:8px;padding:5px 0;}
+.task-sub-title{font-size:12px;flex:1;}
 .card{background:#161616;border:1px solid #1e1e1e;border-radius:12px;padding:12px 13px;margin-bottom:7px;display:flex;align-items:center;gap:11px;cursor:pointer;}
 .card-bl{border-left:3px solid var(--c);}
 .card-title{font-size:14px;font-weight:500;}
 .card-sub{font-size:11px;color:#555;margin-top:2px;}
-/* Pill */
 .pill{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;letter-spacing:.3px;white-space:nowrap;}
-/* Check circle */
 .chk{width:20px;height:20px;border-radius:50%;flex-shrink:0;cursor:pointer;border:2px solid #2c2c2c;display:flex;align-items:center;justify-content:center;transition:all .15s;}
 .chk.done{background:#5aaa7e;border-color:#5aaa7e;}
 .chk-mark{font-size:9px;color:white;font-weight:700;display:none;}
 .chk.done .chk-mark{display:block;}
-/* Btn */
 .btn{padding:12px 18px;border-radius:10px;cursor:pointer;font-size:14px;font-weight:700;font-family:'DM Sans',sans-serif;border:none;transition:opacity .15s;}
 .btn:active{opacity:.75;}
 .btn-gold{background:#c8a96e;color:#0a0a0a;}
@@ -53,57 +53,52 @@ input,select,textarea{font-family:'DM Sans',sans-serif;color-scheme:dark;-webkit
 .btn-red{background:rgba(224,90,90,.12);border:1px solid #e05a5a44 !important;color:#e05a5a;font-weight:500;}
 .btn-full{width:100%;display:block;text-align:center;}
 .btn-row{display:flex;gap:8px;margin-top:4px;}
-/* Overlay / Modal */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:600;display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity .2s;}
 .overlay.open{opacity:1;pointer-events:all;}
 .sheet{background:#181818;border:1px solid #272727;border-radius:22px 22px 0 0;padding:18px 18px calc(40px + env(safe-area-inset-bottom));width:100%;max-height:92vh;overflow-y:auto;transform:translateY(110%);transition:transform .28s cubic-bezier(.32,.72,0,1);}
 .overlay.open .sheet{transform:translateY(0);}
 .sheet-handle{width:36px;height:4px;background:#2c2c2c;border-radius:4px;margin:0 auto 14px;}
 .sheet-title{font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:1.5px;color:#f0ece4;opacity:.7;margin-bottom:14px;}
-/* Form */
 .fg{margin-bottom:12px;}
 .fg-row{display:flex;gap:10px;}
 .fg-label{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#555;margin-bottom:5px;}
 .inp{width:100%;background:#1e1e1e;border:1px solid #2c2c2c;border-radius:10px;padding:11px 13px;color:#f0ece4;font-size:14px;outline:none;}
 .inp:focus{border-color:#c8a96e55;}
 textarea.inp{resize:none;line-height:1.6;}
-/* Checkbox toggle */
 .toggle{display:flex;align-items:center;gap:10px;cursor:pointer;margin-bottom:14px;}
 .toggle-box{width:20px;height:20px;border-radius:6px;border:2px solid #2c2c2c;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;}
 .toggle-box.on{background:#c8a96e;border-color:#c8a96e;}
 .toggle-box.on::after{content:'✓';font-size:11px;color:#0a0a0a;font-weight:700;}
 .toggle-lbl{font-size:13px;color:#f0ece4;}
-/* Summary card */
 .sum-card{background:linear-gradient(135deg,#181208,#181818);border:1px solid #c8a96e22;border-radius:16px;padding:16px 18px;margin-bottom:14px;}
 .sum-lbl{font-size:10px;color:#444;letter-spacing:1px;margin-bottom:3px;}
 .sum-amt{font-family:'Bebas Neue',sans-serif;font-size:36px;color:#c8a96e;letter-spacing:2px;line-height:1;}
 .sum-note{font-size:11px;color:#444;margin-top:4px;}
-/* Progress bar */
 .prog{height:3px;background:#222;border-radius:4px;overflow:hidden;display:inline-block;vertical-align:middle;}
-.prog-fill{height:100%;border-radius:4px;background:#c8a96e;}
-/* Note grid */
+.prog-fill{height:100%;border-radius:4px;}
 .note-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
 .note-card{background:#161616;border:1px solid #1e1e1e;border-radius:12px;padding:12px;cursor:pointer;min-height:80px;}
 .note-card-title{font-size:13px;font-weight:600;margin-bottom:5px;}
 .note-card-body{font-size:12px;color:#666;line-height:1.5;overflow:hidden;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;}
-/* Subtask */
 .sub-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
 .sub-del{background:none;border:none;color:#333;cursor:pointer;font-size:14px;padding:0;}
-/* Color dots */
-.color-dots{display:flex;gap:8px;flex-wrap:wrap;}
 .cdot{width:28px;height:28px;border-radius:50%;cursor:pointer;border:3px solid transparent;transition:border .15s;}
-/* Finance sub-tabs */
 .sub-tabs{display:flex;gap:8px;margin-bottom:16px;}
 .sub-tab{flex:1;padding:9px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;border:1px solid #1e1e1e;background:#161616;color:#555;transition:all .15s;}
 .sub-tab.on{background:#c8a96e;border-color:#c8a96e;color:#0a0a0a;}
-/* Bar chart */
 .bar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
 .bar-label{font-size:12px;color:#888;min-width:90px;}
 .bar-track{flex:1;height:4px;background:#222;border-radius:4px;overflow:hidden;}
 .bar-fill{height:100%;background:#c8a96e;border-radius:4px;}
 .bar-val{font-size:12px;color:#c8a96e;min-width:60px;text-align:right;}
-/* Del btn */
 .del-btn{background:none;border:none;color:#333;cursor:pointer;font-size:14px;padding:0;flex-shrink:0;}
+/* Swipeable expense rows */
+.swipe-wrap{position:relative;overflow:hidden;border-radius:12px;margin-bottom:7px;}
+.swipe-actions{position:absolute;right:0;top:0;bottom:0;display:flex;align-items:stretch;}
+.swipe-btn{display:flex;align-items:center;justify-content:center;width:64px;border:none;cursor:pointer;font-size:18px;font-weight:700;}
+.swipe-edit{background:#5a9de0;color:white;}
+.swipe-del{background:#e05a5a;color:white;}
+.swipe-content{background:#161616;border:1px solid #1e1e1e;border-radius:12px;padding:12px 13px;display:flex;align-items:center;gap:11px;position:relative;transition:transform .2s ease;will-change:transform;}
 /* Calendar */
 .cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
 .cal-nav-btn{background:#161616;border:1px solid #1e1e1e;color:#f0ece4;border-radius:8px;padding:6px 14px;cursor:pointer;font-size:16px;}
@@ -120,32 +115,27 @@ textarea.inp{resize:none;line-height:1.6;}
 .legend{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 12px;}
 .legend-item{display:flex;align-items:center;gap:4px;font-size:10px;color:#444;}
 .legend-dot{width:6px;height:6px;border-radius:50%;}
-/* Day detail */
 .day-detail{background:#161616;border:1px solid #1e1e1e;border-radius:14px;padding:14px;margin-bottom:12px;}
-/* Upcoming row */
-.up-row{background:#161616;border:1px solid #1e1e1e;border-radius:12px;padding:11px 13px;margin-bottom:7px;display:flex;align-items:center;gap:11px;}
+/* Event row — tappable for edit */
+.ev-row{background:#161616;border:1px solid #1e1e1e;border-radius:12px;padding:11px 13px;margin-bottom:7px;display:flex;align-items:center;gap:11px;cursor:pointer;transition:background .15s;}
+.ev-row:active{background:#1e1e1e;}
+.ev-row-bl{border-left:3px solid var(--c);}
 .up-days{font-family:'Bebas Neue',sans-serif;font-size:16px;}
-/* Cat section */
 .cat-sec{margin-bottom:16px;}
 .cat-hdr{display:flex;align-items:center;gap:7px;margin-bottom:8px;}
 .cat-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
 .cat-name{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:1.5px;color:#f0ece4;opacity:.55;}
 .cat-count{background:#1e1e1e;color:#444;border-radius:20px;padding:1px 8px;font-size:9px;margin-left:auto;}
+/* Edit badge */
+.edit-hint{font-size:10px;color:#444;margin-left:auto;flex-shrink:0;}
 </style>
 </head>
 <body>
 <div id="app">
-  <!-- HEADER -->
   <div id="hdr">
     <div class="hdr-top">
-      <div>
-        <div class="brand">JOSUÉ</div>
-        <div class="brand-sub">MI ESPACIO</div>
-      </div>
-      <div class="hdr-date">
-        <div class="hdr-date-lbl">HOY</div>
-        <div class="hdr-date-val" id="hdr-date"></div>
-      </div>
+      <div><div class="brand">JOSUÉ</div><div class="brand-sub">MI ESPACIO</div></div>
+      <div class="hdr-date"><div class="hdr-date-lbl">HOY</div><div class="hdr-date-val" id="hdr-date"></div></div>
     </div>
     <div class="tabs">
       <button class="tab on" data-tab="tasks">✅ Tareas</button>
@@ -154,8 +144,6 @@ textarea.inp{resize:none;line-height:1.6;}
       <button class="tab" data-tab="notes">📝 Notas</button>
     </div>
   </div>
-
-  <!-- CONTENT -->
   <div id="content"></div>
 </div>
 
@@ -168,251 +156,254 @@ textarea.inp{resize:none;line-height:1.6;}
 <div class="overlay" id="ov-notedetail"><div class="sheet" id="sh-notedetail"></div></div>
 
 <script>
-// ─── Data ─────────────────────────────────────────────────────────────────────
-const MONTHS = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
-const DAYS   = ["D","L","M","M","J","V","S"];
-const now = new Date(), TD = now.getDate(), TM = now.getMonth(), TY = now.getFullYear();
-
-const EV_TYPES = {
-  corte:      {label:"Corte tarjeta",    color:"#e05a5a", emoji:"✂️"},
-  pago:       {label:"Pago / Límite",    color:"#f59e0b", emoji:"💳"},
-  suscripcion:{label:"Suscripción",      color:"#5a9de0", emoji:"🔄"},
-  ingreso:    {label:"Ingreso",          color:"#5aaa7e", emoji:"💰"},
-  fecha:      {label:"Fecha importante", color:"#c084fc", emoji:"⭐"},
-  cumple:     {label:"Cumpleaños",       color:"#f472b6", emoji:"🎂"},
-  otro:       {label:"Otro",             color:"#94a3b8", emoji:"📌"},
+const MONTHS=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+const DAYS=["D","L","M","M","J","V","S"];
+const now=new Date(),TD=now.getDate(),TM=now.getMonth(),TY=now.getFullYear();
+const EV_TYPES={
+  corte:{label:"Corte tarjeta",color:"#e05a5a",emoji:"✂️"},
+  pago:{label:"Pago / Límite",color:"#f59e0b",emoji:"💳"},
+  suscripcion:{label:"Suscripción",color:"#5a9de0",emoji:"🔄"},
+  ingreso:{label:"Ingreso",color:"#5aaa7e",emoji:"💰"},
+  fecha:{label:"Fecha importante",color:"#c084fc",emoji:"⭐"},
+  cumple:{label:"Cumpleaños",color:"#f472b6",emoji:"🎂"},
+  otro:{label:"Otro",color:"#94a3b8",emoji:"📌"},
 };
+const TASK_CATS={"Personal":"#f472b6","Trabajo":"#c8a96e","Salud":"#5aaa7e","Finanzas":"#5a9de0","Hogar":"#fb923c","Otro":"#94a3b8"};
+const EXP_CATS=["Comida","Transporte","Entretenimiento","Ropa","Salud","Servicios","Negocio","Otro"];
+const NOTE_COLORS=["#c8a96e","#5a9de0","#5aaa7e","#f472b6","#c084fc","#f59e0b","#94a3b8"];
 
-const TASK_CATS = {
-  "Personal":"#f472b6","Trabajo":"#c8a96e","Salud":"#5aaa7e",
-  "Finanzas":"#5a9de0","Hogar":"#fb923c","Otro":"#94a3b8"
-};
-const EXP_CATS = ["Comida","Transporte","Entretenimiento","Ropa","Salud","Servicios","Negocio","Otro"];
-const NOTE_COLORS = ["#c8a96e","#5a9de0","#5aaa7e","#f472b6","#c084fc","#f59e0b","#94a3b8"];
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7);}
+function fmtMXN(n){return"$"+Number(n).toLocaleString("es-MX",{minimumFractionDigits:0});}
+function daysInMonth(y,m){return new Date(y,m+1,0).getDate();}
+function firstDay(y,m){return new Date(y,m,1).getDay();}
+function load(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch{return d;}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch{}}
 
-function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
-function fmtMXN(n){ return "$"+Number(n).toLocaleString("es-MX",{minimumFractionDigits:0}); }
-function daysInMonth(y,m){ return new Date(y,m+1,0).getDate(); }
-function firstDay(y,m){ return new Date(y,m,1).getDay(); }
-
-// ─── Storage ──────────────────────────────────────────────────────────────────
-function load(key, def){ try{ const v=localStorage.getItem(key); return v?JSON.parse(v):def; }catch{ return def; } }
-function save(key, val){ try{ localStorage.setItem(key,JSON.stringify(val)); }catch{} }
-
-// ─── State ────────────────────────────────────────────────────────────────────
-let tasks    = load("josue-tasks-v2",   [
+let tasks=load("josue-tasks-v2",[
   {id:"t1",title:"Registro de marca IMPI",cat:"Trabajo",prio:"alta",done:false,note:"impi.gob.mx — Clase 37 y/o 35",subtasks:[{id:"s1",title:"Buscar apoderado",done:false},{id:"s2",title:"Preparar documentos",done:false}]},
   {id:"t2",title:"Landing page Alpha Detailing",cat:"Trabajo",prio:"alta",done:false,note:"CTA WhatsApp, galería, cotizador",subtasks:[]},
   {id:"t3",title:"Configurar bots WhatsApp / IG / FB",cat:"Trabajo",prio:"media",done:false,note:"",subtasks:[{id:"s3",title:"WhatsApp",done:false},{id:"s4",title:"Instagram DM",done:false},{id:"s5",title:"Messenger",done:false}]},
 ]);
-let events   = load("josue-events-v2",  [
+let events=load("josue-events-v2",[
   {id:"e1",title:"Corte BBVA",day:5,month:-1,year:null,repeat:true,type:"corte",amount:null,note:""},
   {id:"e2",title:"Pago BBVA",day:20,month:-1,year:null,repeat:true,type:"pago",amount:null,note:"Fecha límite"},
   {id:"e3",title:"Netflix",day:12,month:-1,year:null,repeat:true,type:"suscripcion",amount:219,note:""},
   {id:"e4",title:"Spotify",day:8,month:-1,year:null,repeat:true,type:"suscripcion",amount:109,note:""},
 ]);
-let notes    = load("josue-notes-v2",   [
+let notes=load("josue-notes-v2",[
   {id:"n1",title:"Ideas negocio",body:"- Paquete mantenimiento mensual\n- Alianza con agencias de autos\n- Reels del proceso de ceramic coating",color:"#c8a96e",pinned:true,updatedAt:Date.now()},
 ]);
-let expenses = load("josue-expenses-v2",[]);
+let expenses=load("josue-expenses-v2",[]);
 
-// Calendar state
-let curY = TY, curM = TM, selDay = null;
-let activeTab = "tasks", finTab = "gastos";
-let activeTaskId = null, activeNoteId = null;
+let curY=TY,curM=TM,selDay=null;
+let activeTab="tasks",finTab="gastos";
+let activeTaskId=null,activeNoteId=null,activeEventId=null,activeExpenseId=null;
 
-// ─── Persist ──────────────────────────────────────────────────────────────────
-function persist(){ save("josue-tasks-v2",tasks); save("josue-events-v2",events); save("josue-notes-v2",notes); save("josue-expenses-v2",expenses); }
-
-// ─── Modal helpers ─────────────────────────────────────────────────────────────
-function openModal(id){ document.getElementById("ov-"+id).classList.add("open"); }
-function closeModal(id){ document.getElementById("ov-"+id).classList.remove("open"); }
+function persist(){save("josue-tasks-v2",tasks);save("josue-events-v2",events);save("josue-notes-v2",notes);save("josue-expenses-v2",expenses);}
+function openModal(id){document.getElementById("ov-"+id).classList.add("open");}
+function closeModal(id){document.getElementById("ov-"+id).classList.remove("open");}
 document.querySelectorAll(".overlay").forEach(ov=>{
-  ov.addEventListener("click",e=>{ if(e.target===ov) ov.classList.remove("open"); });
+  ov.addEventListener("click",e=>{if(e.target===ov)ov.classList.remove("open");});
 });
 
-// ─── Render helpers ───────────────────────────────────────────────────────────
-function priColor(p){ return p==="alta"?"#e05a5a":p==="media"?"#f59e0b":"#5aaa7e"; }
-function priEmoji(p){ return p==="alta"?"🔴":p==="media"?"🟡":"🟢"; }
-function pill(color,text){ return `<span class="pill" style="background:${color}22;color:${color}">${text}</span>`; }
+function priColor(p){return p==="alta"?"#e05a5a":p==="media"?"#f59e0b":"#5aaa7e";}
+function priEmoji(p){return p==="alta"?"🔴":p==="media"?"🟡":"🟢";}
+function pill(color,text){return`<span class="pill" style="background:${color}22;color:${color}">${text}</span>`;}
 
-function eventsForDay(d, y=curY, m=curM){
+function eventsForDay(d,y=curY,m=curM){
   return events.filter(ev=>{
-    if(ev.day!==d) return false;
-    if(ev.repeat||ev.month===-1) return true;
+    if(ev.day!==d)return false;
+    if(ev.repeat||ev.month===-1)return true;
     return ev.month===m&&(!ev.year||ev.year===y);
   });
 }
-
 function upcomingThisMonth(){
-  const dim=daysInMonth(curY,curM), list=[];
-  for(let d=1;d<=dim;d++) eventsForDay(d).forEach(ev=>list.push({...ev,_d:d}));
+  const dim=daysInMonth(curY,curM),list=[];
+  for(let d=1;d<=dim;d++)eventsForDay(d).forEach(ev=>list.push({...ev,_d:d}));
   return list.sort((a,b)=>a._d-b._d);
 }
 
-// ─── Header date ─────────────────────────────────────────────────────────────
-document.getElementById("hdr-date").textContent = `${TD} ${MONTHS[TM].slice(0,3).toUpperCase()} ${TY}`;
-
-// ─── Tab switching ────────────────────────────────────────────────────────────
+document.getElementById("hdr-date").textContent=`${TD} ${MONTHS[TM].slice(0,3).toUpperCase()} ${TY}`;
 document.querySelectorAll(".tab").forEach(btn=>{
   btn.addEventListener("click",()=>{
     document.querySelectorAll(".tab").forEach(b=>b.classList.remove("on"));
     btn.classList.add("on");
-    activeTab = btn.dataset.tab;
+    activeTab=btn.dataset.tab;
     render();
   });
 });
 
-// ─── RENDER ───────────────────────────────────────────────────────────────────
+// ── RENDER ────────────────────────────────────────────────────────────────────
 function render(){
-  const c = document.getElementById("content");
-  if(activeTab==="tasks")  c.innerHTML = renderTasks();
-  if(activeTab==="fin")    c.innerHTML = renderFin();
-  if(activeTab==="cal")    c.innerHTML = renderCal();
-  if(activeTab==="notes")  c.innerHTML = renderNotes();
+  const c=document.getElementById("content");
+  if(activeTab==="tasks") c.innerHTML=renderTasks();
+  if(activeTab==="fin")   c.innerHTML=renderFin();
+  if(activeTab==="cal")   c.innerHTML=renderCal();
+  if(activeTab==="notes") c.innerHTML=renderNotes();
   bindEvents();
+  initSwipes();
 }
 
-// ══ TASKS ══
+// ══ TASKS — subtareas inline ══
 function renderTasks(){
-  const pending = tasks.filter(t=>!t.done);
-  const done    = tasks.filter(t=>t.done);
-  let h = `
-  <div class="stat-grid">
+  const pending=tasks.filter(t=>!t.done);
+  const done=tasks.filter(t=>t.done);
+  let h=`<div class="stat-grid">
     <div class="stat-box"><div class="stat-n" style="color:#c8a96e">${tasks.length}</div><div class="stat-l">TOTAL</div></div>
     <div class="stat-box"><div class="stat-n" style="color:#e05a5a">${pending.length}</div><div class="stat-l">PENDIENTES</div></div>
     <div class="stat-box"><div class="stat-n" style="color:#5aaa7e">${done.length}</div><div class="stat-l">LISTAS</div></div>
   </div>`;
 
   Object.keys(TASK_CATS).forEach(cat=>{
-    const ct = pending.filter(t=>t.cat===cat);
-    if(!ct.length) return;
-    const color = TASK_CATS[cat];
-    h += `<div class="cat-sec">
-      <div class="cat-hdr">
-        <div class="cat-dot" style="background:${color}"></div>
-        <div class="cat-name">${cat.toUpperCase()}</div>
-        <div class="cat-count">${ct.length}</div>
-      </div>`;
+    const ct=pending.filter(t=>t.cat===cat);
+    if(!ct.length)return;
+    const color=TASK_CATS[cat];
+    h+=`<div class="cat-sec"><div class="cat-hdr">
+      <div class="cat-dot" style="background:${color}"></div>
+      <div class="cat-name">${cat.toUpperCase()}</div>
+      <div class="cat-count">${ct.length}</div>
+    </div>`;
     ct.forEach(t=>{
-      const subDone = t.subtasks.filter(s=>s.done).length;
-      const subTotal = t.subtasks.length;
-      const pc = priColor(t.prio);
-      h += `<div class="card card-bl" style="--c:${pc}" data-action="task-detail" data-id="${t.id}">
-        <div class="chk${t.done?" done":""}" data-action="toggle-task" data-id="${t.id}"><span class="chk-mark">✓</span></div>
-        <div style="flex:1;min-width:0">
-          <div class="card-title">${t.title}</div>
-          ${subTotal?`<div class="card-sub">${subDone}/${subTotal} subtareas
-            <span class="prog" style="width:40px;margin-left:6px"><span class="prog-fill" style="width:${subTotal?subDone/subTotal*100:0}%;background:${color}"></span></span>
-          </div>`:""}
+      const pc=priColor(t.prio);
+      const subDone=t.subtasks.filter(s=>s.done).length;
+      const subTotal=t.subtasks.length;
+      // Subtasks inline
+      let subsHtml="";
+      if(subTotal>0){
+        subsHtml=`<div class="task-subtasks">`;
+        t.subtasks.forEach(s=>{
+          subsHtml+=`<div class="task-sub-row">
+            <div class="chk${s.done?" done":""}" style="width:16px;height:16px;flex-shrink:0"
+              data-action="toggle-sub" data-tid="${t.id}" data-sid="${s.id}">
+              <span class="chk-mark" style="font-size:8px">✓</span>
+            </div>
+            <div class="task-sub-title" style="text-decoration:${s.done?"line-through":"none"};color:${s.done?"#555":"#aaa"}">${s.title}</div>
+          </div>`;
+        });
+        subsHtml+=`<div style="font-size:10px;color:#555;margin-top:4px">${subDone}/${subTotal} completadas
+          <span class="prog" style="width:44px;margin-left:6px"><span class="prog-fill" style="width:${subTotal?subDone/subTotal*100:0}%;background:${color}"></span></span>
+        </div></div>`;
+      }
+      h+=`<div class="task-card" style="--c:${pc}">
+        <div class="task-card-top" data-action="task-detail" data-id="${t.id}">
+          <div class="chk${t.done?" done":""}" data-action="toggle-task" data-id="${t.id}"><span class="chk-mark">✓</span></div>
+          <div style="flex:1;min-width:0">
+            <div class="card-title">${t.title}</div>
+            ${t.note?`<div class="card-sub" style="margin-top:2px">${t.note}</div>`:""}
+          </div>
+          ${pill(pc,priEmoji(t.prio)+" "+t.prio)}
         </div>
-        ${pill(pc,priEmoji(t.prio)+" "+t.prio)}
+        ${subsHtml}
       </div>`;
     });
-    h += `</div>`;
+    h+=`</div>`;
   });
 
   if(done.length){
-    h += `<div class="sh" style="margin-top:4px">✅ COMPLETADAS</div>`;
+    h+=`<div class="sh" style="margin-top:4px">✅ COMPLETADAS</div>`;
     done.forEach(t=>{
-      h += `<div class="card" style="opacity:.38">
+      h+=`<div class="card" style="opacity:.38">
         <div class="chk done" data-action="toggle-task" data-id="${t.id}"><span class="chk-mark">✓</span></div>
         <div style="flex:1;font-size:13px;text-decoration:line-through">${t.title}</div>
         <button class="del-btn" data-action="del-task" data-id="${t.id}">🗑</button>
       </div>`;
     });
   }
-
-  h += `<button class="btn btn-gold btn-full" data-action="open-task" style="margin-top:8px">+ Nueva tarea</button>`;
+  h+=`<button class="btn btn-gold btn-full" data-action="open-task" style="margin-top:8px">+ Nueva tarea</button>`;
   return h;
 }
 
 // ══ FINANZAS ══
 function renderFin(){
-  let h = `<div class="sub-tabs">
+  let h=`<div class="sub-tabs">
     <button class="sub-tab${finTab==="gastos"?" on":""}" data-action="fin-tab" data-tab="gastos">💸 Gastos</button>
     <button class="sub-tab${finTab==="recurrentes"?" on":""}" data-action="fin-tab" data-tab="recurrentes">🔄 Recurrentes</button>
   </div>`;
 
   if(finTab==="gastos"){
-    const thisM = expenses.filter(e=>{ const d=new Date(e.date); return d.getMonth()===TM&&d.getFullYear()===TY; });
-    const total = thisM.reduce((s,e)=>s+e.amount,0);
-    h += `<div class="sum-card">
+    const thisM=expenses.filter(e=>{const d=new Date(e.date);return d.getMonth()===TM&&d.getFullYear()===TY;});
+    const total=thisM.reduce((s,e)=>s+e.amount,0);
+    h+=`<div class="sum-card">
       <div class="sum-lbl">GASTO ESTE MES — ${MONTHS[TM].toUpperCase()} ${TY}</div>
       <div class="sum-amt">${fmtMXN(total)}<span style="font-size:13px;color:#444"> MXN</span></div>
       <div class="sum-note">${thisM.length} registros</div>
     </div>`;
 
-    // By category
-    const byCat = {};
-    EXP_CATS.forEach(c=>{ byCat[c]=thisM.filter(e=>e.cat===c).reduce((s,e)=>s+e.amount,0); });
-    const hasCat = Object.entries(byCat).filter(([,v])=>v>0).sort(([,a],[,b])=>b-a);
+    const byCat={};
+    EXP_CATS.forEach(c=>{byCat[c]=thisM.filter(e=>e.cat===c).reduce((s,e)=>s+e.amount,0);});
+    const hasCat=Object.entries(byCat).filter(([,v])=>v>0).sort(([,a],[,b])=>b-a);
     if(hasCat.length){
-      h += `<div class="card" style="flex-direction:column;align-items:stretch;cursor:default;margin-bottom:14px">
+      h+=`<div class="card" style="flex-direction:column;align-items:stretch;cursor:default;margin-bottom:14px">
         <div class="sh" style="margin-bottom:10px">POR CATEGORÍA</div>`;
       hasCat.forEach(([c,v])=>{
-        h += `<div class="bar-row">
-          <div class="bar-label">${c}</div>
+        h+=`<div class="bar-row"><div class="bar-label">${c}</div>
           <div class="bar-track"><div class="bar-fill" style="width:${total?v/total*100:0}%"></div></div>
-          <div class="bar-val">${fmtMXN(v)}</div>
-        </div>`;
+          <div class="bar-val">${fmtMXN(v)}</div></div>`;
       });
-      h += `</div>`;
+      h+=`</div>`;
     }
 
-    h += `<div class="sh">REGISTROS RECIENTES</div>`;
-    if(!expenses.length) h += `<div style="color:#444;font-size:13px;margin-bottom:14px">Sin gastos registrados.</div>`;
+    h+=`<div class="sh">REGISTROS <span style="font-size:9px;opacity:.5">← desliza para editar/borrar</span></div>`;
+    if(!expenses.length) h+=`<div style="color:#444;font-size:13px;margin-bottom:14px">Sin gastos registrados.</div>`;
+
+    // Swipeable rows
     expenses.slice(0,40).forEach(e=>{
-      const d = new Date(e.date);
-      h += `<div class="card" style="cursor:default">
-        <div style="flex:1">
-          <div class="card-title">${e.desc||e.cat}</div>
-          <div class="card-sub">${d.getDate()} ${MONTHS[d.getMonth()].slice(0,3)} · ${e.cat}</div>
+      const d=new Date(e.date);
+      h+=`<div class="swipe-wrap" data-swipe-id="${e.id}">
+        <div class="swipe-actions">
+          <button class="swipe-btn swipe-edit" data-action="edit-expense" data-id="${e.id}">✏️</button>
+          <button class="swipe-btn swipe-del" data-action="del-expense" data-id="${e.id}">🗑</button>
         </div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:17px;color:#e05a5a">${fmtMXN(e.amount)}</div>
-        <button class="del-btn" data-action="del-expense" data-id="${e.id}">🗑</button>
+        <div class="swipe-content">
+          <div style="flex:1">
+            <div class="card-title">${e.desc||e.cat}</div>
+            <div class="card-sub">${d.getDate()} ${MONTHS[d.getMonth()].slice(0,3)} · ${e.cat}</div>
+          </div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:17px;color:#e05a5a">${fmtMXN(e.amount)}</div>
+        </div>
       </div>`;
     });
-    h += `<button class="btn btn-gold btn-full" data-action="open-expense" style="margin-top:8px">+ Registrar gasto</button>`;
+    h+=`<button class="btn btn-gold btn-full" data-action="open-expense" style="margin-top:8px">+ Registrar gasto</button>`;
   }
 
   if(finTab==="recurrentes"){
-    const fixed = events.filter(ev=>(ev.type==="suscripcion"||ev.type==="pago")&&ev.amount).reduce((s,ev)=>s+ev.amount,0);
-    h += `<div class="sum-card">
+    const fixed=events.filter(ev=>(ev.type==="suscripcion"||ev.type==="pago")&&ev.amount).reduce((s,ev)=>s+ev.amount,0);
+    h+=`<div class="sum-card">
       <div class="sum-lbl">FIJO MENSUAL ESTIMADO</div>
       <div class="sum-amt">${fmtMXN(fixed)}<span style="font-size:13px;color:#444"> MXN</span></div>
       <div class="sum-note">Suscripciones + pagos con monto</div>
     </div>`;
     Object.entries(EV_TYPES).forEach(([tk,tv])=>{
-      const evs = [...events].filter(ev=>ev.type===tk).sort((a,b)=>a.day-b.day);
-      if(!evs.length) return;
-      h += `<div class="cat-sec">
-        <div class="cat-hdr"><div class="cat-dot" style="background:${tv.color}"></div>
-        <div class="cat-name">${tv.emoji} ${tv.label.toUpperCase()}</div></div>`;
+      const evs=[...events].filter(ev=>ev.type===tk).sort((a,b)=>a.day-b.day);
+      if(!evs.length)return;
+      h+=`<div class="cat-sec"><div class="cat-hdr">
+        <div class="cat-dot" style="background:${tv.color}"></div>
+        <div class="cat-name">${tv.emoji} ${tv.label.toUpperCase()}</div>
+      </div>`;
       evs.forEach(ev=>{
-        h += `<div class="card card-bl" style="--c:${tv.color};cursor:default">
+        h+=`<div class="ev-row ev-row-bl" style="--c:${tv.color}" data-action="edit-event" data-id="${ev.id}">
           <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:${tv.color};min-width:26px;text-align:center">${ev.day}</div>
           <div style="flex:1">
             <div class="card-title">${ev.title}</div>
             <div class="card-sub">${ev.repeat?"🔁 Mensual":ev.month>=0?MONTHS[ev.month]:""}${ev.note?" · "+ev.note:""}</div>
           </div>
           ${ev.amount?`<div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:${tv.color}">${fmtMXN(ev.amount)}</div>`:""}
-          <button class="del-btn" data-action="del-event" data-id="${ev.id}">🗑</button>
+          <span class="edit-hint">✏️</span>
         </div>`;
       });
-      h += `</div>`;
+      h+=`</div>`;
     });
-    h += `<button class="btn btn-gold btn-full" data-action="open-event" style="margin-top:8px">+ Agregar recurrente</button>`;
+    h+=`<button class="btn btn-gold btn-full" data-action="open-event" style="margin-top:8px">+ Agregar recurrente</button>`;
   }
   return h;
 }
 
 // ══ CALENDAR ══
 function renderCal(){
-  const dim=daysInMonth(curY,curM), fd=firstDay(curY,curM);
-  let cells = ``;
-  DAYS.forEach(d=>{ cells+=`<div class="cal-day-name">${d}</div>`; });
-  for(let i=0;i<fd;i++) cells+=`<div></div>`;
+  const dim=daysInMonth(curY,curM),fd=firstDay(curY,curM);
+  let cells="";
+  DAYS.forEach(d=>{cells+=`<div class="cal-day-name">${d}</div>`;});
+  for(let i=0;i<fd;i++)cells+=`<div></div>`;
   for(let d=1;d<=dim;d++){
     const isToday=d===TD&&curM===TM&&curY===TY;
     const isSel=selDay===d;
@@ -424,121 +415,150 @@ function renderCal(){
     </div>`;
   }
 
-  let legend = `<div class="legend">`;
-  Object.entries(EV_TYPES).forEach(([,v])=>{ legend+=`<div class="legend-item"><div class="legend-dot" style="background:${v.color}"></div>${v.emoji}</div>`; });
-  legend += `</div>`;
+  let legend=`<div class="legend">`;
+  Object.entries(EV_TYPES).forEach(([,v])=>{legend+=`<div class="legend-item"><div class="legend-dot" style="background:${v.color}"></div>${v.emoji}</div>`;});
+  legend+=`</div>`;
 
-  let selDetail = "";
+  let selDetail="";
   if(selDay){
-    const sevs = eventsForDay(selDay);
-    selDetail = `<div class="day-detail">
+    const sevs=eventsForDay(selDay);
+    selDetail=`<div class="day-detail">
       <div class="sh" style="margin-bottom:10px">${selDay} DE ${MONTHS[curM].toUpperCase()}</div>`;
-    if(!sevs.length) selDetail+=`<div style="color:#444;font-size:13px">Sin eventos este día.</div>`;
+    if(!sevs.length)selDetail+=`<div style="color:#444;font-size:13px">Sin eventos este día.</div>`;
     sevs.forEach(ev=>{
       const m=EV_TYPES[ev.type]||EV_TYPES.otro;
-      selDetail+=`<div style="background:#1a1a1a;border:1px solid ${m.color}22;border-radius:10px;padding:10px 12px;margin-bottom:7px;display:flex;gap:10px;align-items:center">
+      selDetail+=`<div class="ev-row" style="margin-bottom:7px" data-action="edit-event" data-id="${ev.id}">
         <span style="font-size:16px">${m.emoji}</span>
         <div style="flex:1">
           <div style="font-size:14px;font-weight:500">${ev.title}</div>
           ${ev.amount?`<div style="font-size:11px;color:${m.color};margin-top:1px">${fmtMXN(ev.amount)} MXN</div>`:""}
           ${ev.note?`<div style="font-size:11px;color:#555;margin-top:1px">${ev.note}</div>`:""}
         </div>
-        <button class="del-btn" data-action="del-event" data-id="${ev.id}">🗑</button>
+        <span class="edit-hint">✏️</span>
       </div>`;
     });
-    selDetail += `</div>`;
+    selDetail+=`</div>`;
   }
 
-  const upcoming = upcomingThisMonth().filter(e=>e._d>=TD);
-  let upHtml = `<div class="sh">PRÓXIMOS EN ${MONTHS[curM].toUpperCase()}</div>`;
-  if(!upcoming.length) upHtml+=`<div style="color:#444;font-size:13px;margin-bottom:12px">Sin eventos próximos.</div>`;
+  const upcoming=upcomingThisMonth().filter(e=>e._d>=TD);
+  let upHtml=`<div class="sh">PRÓXIMOS EN ${MONTHS[curM].toUpperCase()} <span style="font-size:9px;opacity:.5">· toca para editar</span></div>`;
+  if(!upcoming.length)upHtml+=`<div style="color:#444;font-size:13px;margin-bottom:12px">Sin eventos próximos.</div>`;
   upcoming.forEach(ev=>{
     const m=EV_TYPES[ev.type]||EV_TYPES.otro;
     const dl=ev._d-TD;
-    upHtml+=`<div class="up-row card-bl" style="--c:${m.color}">
+    upHtml+=`<div class="ev-row ev-row-bl" style="--c:${m.color}" data-action="edit-event" data-id="${ev.id}">
       <div style="font-size:17px">${m.emoji}</div>
       <div style="flex:1">
         <div class="card-title">${ev.title}</div>
         <div class="card-sub">Día ${ev._d}${ev.repeat?" · Mensual":""}${ev.amount?" · "+fmtMXN(ev.amount)+" MXN":""}</div>
       </div>
       <div class="up-days" style="color:${dl<=0?"#e05a5a":dl<=5?"#f59e0b":"#555"}">${dl<=0?"HOY":dl+"d"}</div>
+      <span class="edit-hint">✏️</span>
     </div>`;
   });
 
-  return `
-  <div class="cal-nav">
+  return`<div class="cal-nav">
     <button class="cal-nav-btn" data-action="cal-prev">‹</button>
     <div class="cal-month">${MONTHS[curM]} ${curY}</div>
     <button class="cal-nav-btn" data-action="cal-next">›</button>
   </div>
   <div class="cal-grid">${cells}</div>
-  ${legend}
-  ${selDetail}
-  ${upHtml}
+  ${legend}${selDetail}${upHtml}
   <button class="btn btn-gold btn-full" data-action="open-event" style="margin-top:8px">+ Agregar evento</button>`;
 }
 
 // ══ NOTES ══
 function renderNotes(){
-  const pinned   = notes.filter(n=>n.pinned);
-  const unpinned = notes.filter(n=>!n.pinned);
-  let h = "";
+  const pinned=notes.filter(n=>n.pinned),unpinned=notes.filter(n=>!n.pinned);
+  let h="";
   if(pinned.length){
-    h += `<div class="sh">📌 FIJADAS</div><div class="note-grid">`;
-    pinned.forEach(n=>{
-      h+=`<div class="note-card" style="border-top:3px solid ${n.color}" data-action="note-detail" data-id="${n.id}">
-        ${n.title?`<div class="note-card-title" style="color:${n.color}">${n.title}</div>`:""}
-        <div class="note-card-body">${n.body||'<span style="color:#333;font-style:italic">Sin contenido</span>'}</div>
-      </div>`;
-    });
-    h += `</div>`;
+    h+=`<div class="sh">📌 FIJADAS</div><div class="note-grid">`;
+    pinned.forEach(n=>{h+=noteCard(n);});
+    h+=`</div>`;
   }
   if(unpinned.length){
-    h += `<div class="sh">TODAS</div><div class="note-grid">`;
-    unpinned.forEach(n=>{
-      h+=`<div class="note-card" style="border-top:3px solid ${n.color}" data-action="note-detail" data-id="${n.id}">
-        ${n.title?`<div class="note-card-title" style="color:${n.color}">${n.title}</div>`:""}
-        <div class="note-card-body">${n.body||'<span style="color:#333;font-style:italic">Sin contenido</span>'}</div>
-      </div>`;
-    });
-    h += `</div>`;
+    h+=`<div class="sh">TODAS</div><div class="note-grid">`;
+    unpinned.forEach(n=>{h+=noteCard(n);});
+    h+=`</div>`;
   }
-  if(!notes.length) h+=`<div style="color:#444;font-size:13px;margin-bottom:14px">Sin notas todavía.</div>`;
+  if(!notes.length)h+=`<div style="color:#444;font-size:13px;margin-bottom:14px">Sin notas todavía.</div>`;
   h+=`<button class="btn btn-gold btn-full" data-action="open-note">+ Nueva nota</button>`;
   return h;
 }
+function noteCard(n){
+  return`<div class="note-card" style="border-top:3px solid ${n.color}" data-action="note-detail" data-id="${n.id}">
+    ${n.title?`<div class="note-card-title" style="color:${n.color}">${n.title}</div>`:""}
+    <div class="note-card-body">${n.body||'<span style="color:#333;font-style:italic">Sin contenido</span>'}</div>
+  </div>`;
+}
 
-// ─── Bind events ──────────────────────────────────────────────────────────────
+// ── Bind ──────────────────────────────────────────────────────────────────────
 function bindEvents(){
-  document.getElementById("content").addEventListener("click", handleAction);
+  document.getElementById("content").addEventListener("click",handleAction);
 }
 
 function handleAction(e){
-  const el = e.target.closest("[data-action]");
-  if(!el) return;
-  const action = el.dataset.action, id = el.dataset.id;
+  const el=e.target.closest("[data-action]");
+  if(!el)return;
+  const action=el.dataset.action,id=el.dataset.id;
 
-  if(action==="toggle-task"){ e.stopPropagation(); tasks=tasks.map(t=>t.id===id?{...t,done:!t.done}:t); persist(); render(); }
-  if(action==="del-task")   { e.stopPropagation(); tasks=tasks.filter(t=>t.id!==id); persist(); render(); }
-  if(action==="open-task")  { renderTaskModal(); openModal("task"); }
-  if(action==="task-detail"){ activeTaskId=id; renderTaskDetail(); openModal("taskdetail"); }
-  if(action==="del-event")  { events=events.filter(ev=>ev.id!==id); persist(); render(); }
-  if(action==="open-event") { renderEventModal(); openModal("event"); }
-  if(action==="del-expense"){ expenses=expenses.filter(ex=>ex.id!==id); persist(); render(); }
-  if(action==="open-expense"){ renderExpenseModal(); openModal("expense"); }
-  if(action==="open-note")  { renderNoteModal(); openModal("note"); }
-  if(action==="note-detail"){ activeNoteId=id; renderNoteDetail(); openModal("notedetail"); }
-  if(action==="fin-tab")    { finTab=el.dataset.tab; render(); }
-  if(action==="cal-prev")   { if(curM===0){curM=11;curY--;}else curM--; selDay=null; render(); }
-  if(action==="cal-next")   { if(curM===11){curM=0;curY++;}else curM++; selDay=null; render(); }
-  if(action==="cal-day")    { const d=parseInt(el.dataset.d); selDay=selDay===d?null:d; render(); }
+  if(action==="toggle-task"){e.stopPropagation();tasks=tasks.map(t=>t.id===id?{...t,done:!t.done}:t);persist();render();}
+  if(action==="toggle-sub"){
+    e.stopPropagation();
+    const tid=el.dataset.tid,sid=el.dataset.sid;
+    tasks=tasks.map(t=>t.id===tid?{...t,subtasks:t.subtasks.map(s=>s.id===sid?{...s,done:!s.done}:s)}:t);
+    persist();render();
+  }
+  if(action==="del-task"){e.stopPropagation();tasks=tasks.filter(t=>t.id!==id);persist();render();}
+  if(action==="open-task"){renderTaskModal();openModal("task");}
+  if(action==="task-detail"){activeTaskId=id;renderTaskDetail();openModal("taskdetail");}
+  if(action==="edit-event"){activeEventId=id;renderEventModal(id);openModal("event");}
+  if(action==="open-event"){activeEventId=null;renderEventModal(null);openModal("event");}
+  if(action==="del-expense"){expenses=expenses.filter(ex=>ex.id!==id);persist();render();}
+  if(action==="edit-expense"){activeExpenseId=id;renderExpenseModal(id);openModal("expense");}
+  if(action==="open-expense"){activeExpenseId=null;renderExpenseModal(null);openModal("expense");}
+  if(action==="open-note"){renderNoteModal();openModal("note");}
+  if(action==="note-detail"){activeNoteId=id;renderNoteDetail();openModal("notedetail");}
+  if(action==="fin-tab"){finTab=el.dataset.tab;render();}
+  if(action==="cal-prev"){if(curM===0){curM=11;curY--;}else curM--;selDay=null;render();}
+  if(action==="cal-next"){if(curM===11){curM=0;curY++;}else curM++;selDay=null;render();}
+  if(action==="cal-day"){const d=parseInt(el.dataset.d);selDay=selDay===d?null:d;render();}
 }
 
-// ─── Task Modal ───────────────────────────────────────────────────────────────
-let tmpSubs = [];
+// ── Swipe for expenses ────────────────────────────────────────────────────────
+function initSwipes(){
+  document.querySelectorAll(".swipe-wrap").forEach(wrap=>{
+    const content=wrap.querySelector(".swipe-content");
+    const actions=wrap.querySelector(".swipe-actions");
+    const actW=actions?actions.offsetWidth||128:128;
+    let startX=0,currentX=0,swiped=false;
+
+    content.addEventListener("touchstart",e=>{startX=e.touches[0].clientX;currentX=0;},{passive:true});
+    content.addEventListener("touchmove",e=>{
+      currentX=e.touches[0].clientX-startX;
+      if(currentX<0){
+        const clamped=Math.max(currentX,-actW);
+        content.style.transform=`translateX(${clamped}px)`;
+        content.style.transition="none";
+      }
+    },{passive:true});
+    content.addEventListener("touchend",()=>{
+      content.style.transition="transform .2s ease";
+      if(currentX<-actW/2){content.style.transform=`translateX(-${actW}px)`;swiped=true;}
+      else{content.style.transform="translateX(0)";swiped=false;}
+    });
+    // Close swipe on tap elsewhere
+    document.addEventListener("touchstart",ev=>{
+      if(swiped&&!wrap.contains(ev.target)){content.style.transform="translateX(0)";swiped=false;}
+    },{passive:true});
+  });
+}
+
+// ── Task Modal ────────────────────────────────────────────────────────────────
+let tmpSubs=[];
 function renderTaskModal(){
   tmpSubs=[];
-  document.getElementById("sh-task").innerHTML = `
+  document.getElementById("sh-task").innerHTML=`
   <div class="sheet-handle"></div>
   <div class="sheet-title">NUEVA TAREA</div>
   <div class="fg"><div class="fg-label">Tarea *</div><input class="inp" id="t-title" placeholder="¿Qué hay que hacer?"/></div>
@@ -549,8 +569,7 @@ function renderTaskModal(){
       <select class="inp" id="t-prio"><option value="alta">🔴 Alta</option><option value="media" selected>🟡 Media</option><option value="baja">🟢 Baja</option></select></div>
   </div>
   <div class="fg"><div class="fg-label">Nota (opcional)</div><textarea class="inp" id="t-note" style="height:54px" placeholder="Contexto, links..."></textarea></div>
-  <div class="fg">
-    <div class="fg-label">Subtareas</div>
+  <div class="fg"><div class="fg-label">Subtareas</div>
     <div style="display:flex;gap:8px;margin-bottom:8px">
       <input class="inp" id="t-sub-inp" style="flex:1;padding:9px 12px" placeholder="Nueva subtarea..."/>
       <button class="btn btn-gold" id="t-sub-add" style="padding:0 16px;font-size:18px">+</button>
@@ -561,53 +580,48 @@ function renderTaskModal(){
     <button class="btn btn-sec" onclick="closeModal('task')">Cancelar</button>
     <button class="btn btn-gold" style="flex:2" id="t-save">Guardar tarea</button>
   </div>`;
-
-  document.getElementById("t-sub-add").onclick = addTmpSub;
-  document.getElementById("t-sub-inp").onkeydown = e=>{ if(e.key==="Enter") addTmpSub(); };
-  document.getElementById("t-save").onclick = saveTask;
+  document.getElementById("t-sub-add").onclick=addTmpSub;
+  document.getElementById("t-sub-inp").onkeydown=e=>{if(e.key==="Enter")addTmpSub();};
+  document.getElementById("t-save").onclick=saveTask;
 }
-
 function addTmpSub(){
-  const inp = document.getElementById("t-sub-inp");
-  if(!inp.value.trim()) return;
+  const inp=document.getElementById("t-sub-inp");
+  if(!inp.value.trim())return;
   tmpSubs.push({id:uid(),title:inp.value.trim(),done:false});
-  inp.value="";
-  renderTmpSubs();
+  inp.value="";renderTmpSubs();
 }
 function renderTmpSubs(){
-  document.getElementById("t-subs-list").innerHTML = tmpSubs.map(s=>`
+  document.getElementById("t-subs-list").innerHTML=tmpSubs.map(s=>`
     <div class="sub-row">
       <div style="width:6px;height:6px;border-radius:50%;background:#c8a96e;flex-shrink:0"></div>
       <div style="flex:1;font-size:13px;color:#aaa">${s.title}</div>
       <button class="sub-del" data-sub-del="${s.id}">✕</button>
     </div>`).join("");
   document.querySelectorAll("[data-sub-del]").forEach(btn=>{
-    btn.onclick=()=>{ tmpSubs=tmpSubs.filter(s=>s.id!==btn.dataset.subDel); renderTmpSubs(); };
+    btn.onclick=()=>{tmpSubs=tmpSubs.filter(s=>s.id!==btn.dataset.subDel);renderTmpSubs();};
   });
 }
 function saveTask(){
   const title=document.getElementById("t-title").value.trim();
-  if(!title) return;
+  if(!title)return;
   tasks.push({id:uid(),title,cat:document.getElementById("t-cat").value,
     prio:document.getElementById("t-prio").value,note:document.getElementById("t-note").value.trim(),
     subtasks:tmpSubs,done:false});
-  persist(); closeModal("task"); render();
+  persist();closeModal("task");render();
 }
 
-// ─── Task Detail Modal ────────────────────────────────────────────────────────
-let detSubInp="";
+// ── Task Detail ───────────────────────────────────────────────────────────────
 function renderTaskDetail(){
-  const t = tasks.find(t=>t.id===activeTaskId);
-  if(!t) return;
+  const t=tasks.find(t=>t.id===activeTaskId);
+  if(!t)return;
   const pc=priColor(t.prio);
-  let subsHtml = t.subtasks.map(s=>`
+  let subsHtml=t.subtasks.map(s=>`
     <div class="sub-row">
       <div class="chk${s.done?" done":""}" style="width:18px;height:18px" data-action-sub="toggle" data-tid="${t.id}" data-sid="${s.id}"><span class="chk-mark" style="font-size:8px">✓</span></div>
       <div style="flex:1;font-size:13px;text-decoration:${s.done?"line-through":"none"};color:${s.done?"#555":"#f0ece4"}">${s.title}</div>
       <button class="sub-del" data-action-sub="del" data-tid="${t.id}" data-sid="${s.id}">✕</button>
     </div>`).join("");
-
-  document.getElementById("sh-taskdetail").innerHTML = `
+  document.getElementById("sh-taskdetail").innerHTML=`
   <div class="sheet-handle"></div>
   <div class="sheet-title">${t.title}</div>
   <div style="margin-bottom:10px">${pill(TASK_CATS[t.cat]||"#94a3b8",t.cat)} ${pill(pc,priEmoji(t.prio)+" "+t.prio)}</div>
@@ -623,58 +637,55 @@ function renderTaskDetail(){
     <button class="btn btn-gold" style="flex:2" id="det-toggle">${t.done?"↩ Reactivar":"✓ Completar"}</button>
     <button class="btn btn-red" id="det-del">🗑</button>
   </div>`;
-
-  document.getElementById("det-sub-add").onclick = ()=>{
+  document.getElementById("det-sub-add").onclick=()=>{
     const inp=document.getElementById("det-sub-inp");
-    if(!inp.value.trim()) return;
+    if(!inp.value.trim())return;
     tasks=tasks.map(tk=>tk.id===activeTaskId?{...tk,subtasks:[...tk.subtasks,{id:uid(),title:inp.value.trim(),done:false}]}:tk);
-    inp.value=""; persist(); renderTaskDetail(); render();
+    inp.value="";persist();renderTaskDetail();render();
   };
-  document.getElementById("det-sub-inp").onkeydown=e=>{
-    if(e.key==="Enter") document.getElementById("det-sub-add").click();
-  };
-  document.getElementById("det-toggle").onclick=()=>{
-    tasks=tasks.map(tk=>tk.id===activeTaskId?{...tk,done:!tk.done}:tk);
-    persist(); closeModal("taskdetail"); render();
-  };
-  document.getElementById("det-del").onclick=()=>{
-    tasks=tasks.filter(tk=>tk.id!==activeTaskId); persist(); closeModal("taskdetail"); render();
-  };
+  document.getElementById("det-sub-inp").onkeydown=e=>{if(e.key==="Enter")document.getElementById("det-sub-add").click();};
+  document.getElementById("det-toggle").onclick=()=>{tasks=tasks.map(tk=>tk.id===activeTaskId?{...tk,done:!tk.done}:tk);persist();closeModal("taskdetail");render();};
+  document.getElementById("det-del").onclick=()=>{tasks=tasks.filter(tk=>tk.id!==activeTaskId);persist();closeModal("taskdetail");render();};
   document.querySelectorAll("[data-action-sub]").forEach(el=>{
     el.onclick=()=>{
-      const tid=el.dataset.tid, sid=el.dataset.sid, act=el.dataset.actionSub;
-      if(act==="toggle") tasks=tasks.map(tk=>tk.id===tid?{...tk,subtasks:tk.subtasks.map(s=>s.id===sid?{...s,done:!s.done}:s)}:tk);
-      if(act==="del")    tasks=tasks.map(tk=>tk.id===tid?{...tk,subtasks:tk.subtasks.filter(s=>s.id!==sid)}:tk);
-      persist(); renderTaskDetail(); render();
+      const tid=el.dataset.tid,sid=el.dataset.sid,act=el.dataset.actionSub;
+      if(act==="toggle")tasks=tasks.map(tk=>tk.id===tid?{...tk,subtasks:tk.subtasks.map(s=>s.id===sid?{...s,done:!s.done}:s)}:tk);
+      if(act==="del")tasks=tasks.map(tk=>tk.id===tid?{...tk,subtasks:tk.subtasks.filter(s=>s.id!==sid)}:tk);
+      persist();renderTaskDetail();render();
     };
   });
 }
 
-// ─── Event Modal ──────────────────────────────────────────────────────────────
-function renderEventModal(){
-  document.getElementById("sh-event").innerHTML = `
+// ── Event Modal (create + edit) ───────────────────────────────────────────────
+function renderEventModal(editId){
+  const ev=editId?events.find(e=>e.id===editId):null;
+  let eRepeat=ev?ev.repeat:false;
+  document.getElementById("sh-event").innerHTML=`
   <div class="sheet-handle"></div>
-  <div class="sheet-title">NUEVO EVENTO</div>
+  <div class="sheet-title">${ev?"EDITAR EVENTO":"NUEVO EVENTO"}</div>
   <div class="fg"><div class="fg-label">Tipo</div>
-    <select class="inp" id="e-type">${Object.entries(EV_TYPES).map(([k,v])=>`<option value="${k}">${v.emoji} ${v.label}</option>`).join("")}</select></div>
-  <div class="fg"><div class="fg-label">Título *</div><input class="inp" id="e-title" placeholder="Ej. Corte BBVA, Cumpleaños mamá..."/></div>
+    <select class="inp" id="e-type">${Object.entries(EV_TYPES).map(([k,v])=>`<option value="${k}"${ev&&ev.type===k?" selected":""}>${v.emoji} ${v.label}</option>`).join("")}</select></div>
+  <div class="fg"><div class="fg-label">Título *</div><input class="inp" id="e-title" value="${ev?ev.title:""}" placeholder="Ej. Corte BBVA, Cumpleaños mamá..."/></div>
   <div class="fg-row">
-    <div class="fg" style="flex:1"><div class="fg-label">Día *</div><input class="inp" id="e-day" type="number" min="1" max="31" placeholder="1–31"/></div>
+    <div class="fg" style="flex:1"><div class="fg-label">Día *</div><input class="inp" id="e-day" type="number" min="1" max="31" value="${ev?ev.day:""}" placeholder="1–31"/></div>
     <div class="fg" style="flex:1"><div class="fg-label">Mes</div>
-      <select class="inp" id="e-month"><option value="-1">— Todos —</option>${MONTHS.map((m,i)=>`<option value="${i}">${m}</option>`).join("")}</select></div>
+      <select class="inp" id="e-month" ${eRepeat?"disabled":""}>
+        <option value="-1"${!ev||ev.month===-1?" selected":""}>— Todos —</option>
+        ${MONTHS.map((m,i)=>`<option value="${i}"${ev&&ev.month===i?" selected":""}>${m}</option>`).join("")}
+      </select></div>
   </div>
-  <div class="fg"><div class="fg-label">Monto MXN (opcional)</div><input class="inp" id="e-amt" type="number" placeholder="Ej. 219"/></div>
-  <div class="fg"><div class="fg-label">Nota (opcional)</div><textarea class="inp" id="e-note" style="height:52px" placeholder="Detalles..."></textarea></div>
+  <div class="fg"><div class="fg-label">Monto MXN (opcional)</div><input class="inp" id="e-amt" type="number" value="${ev&&ev.amount?ev.amount:""}" placeholder="Ej. 219"/></div>
+  <div class="fg"><div class="fg-label">Nota (opcional)</div><textarea class="inp" id="e-note" style="height:52px" placeholder="Detalles...">${ev?ev.note:""}</textarea></div>
   <div class="toggle" id="e-repeat-toggle">
-    <div class="toggle-box" id="e-repeat-box"></div>
+    <div class="toggle-box${eRepeat?" on":""}" id="e-repeat-box"></div>
     <div class="toggle-lbl">🔁 Se repite cada mes</div>
   </div>
   <div class="btn-row">
+    ${ev?`<button class="btn btn-red" id="e-del">🗑 Eliminar</button>`:""}
     <button class="btn btn-sec" onclick="closeModal('event')">Cancelar</button>
-    <button class="btn btn-gold" style="flex:2" id="e-save">Guardar</button>
+    <button class="btn btn-gold" style="flex:2" id="e-save">${ev?"Guardar cambios":"Guardar"}</button>
   </div>`;
 
-  let eRepeat=false;
   document.getElementById("e-repeat-toggle").onclick=()=>{
     eRepeat=!eRepeat;
     document.getElementById("e-repeat-box").classList.toggle("on",eRepeat);
@@ -683,76 +694,92 @@ function renderEventModal(){
   document.getElementById("e-save").onclick=()=>{
     const title=document.getElementById("e-title").value.trim();
     const day=parseInt(document.getElementById("e-day").value);
-    if(!title||!day) return;
-    events.push({id:uid(),title,day,month:eRepeat?-1:parseInt(document.getElementById("e-month").value),
-      year:eRepeat?null:curY,type:document.getElementById("e-type").value,
+    if(!title||!day)return;
+    const updated={
+      id:ev?ev.id:uid(),title,day,
+      month:eRepeat?-1:parseInt(document.getElementById("e-month").value),
+      year:eRepeat?null:curY,
+      type:document.getElementById("e-type").value,
       amount:document.getElementById("e-amt").value?parseFloat(document.getElementById("e-amt").value):null,
-      repeat:eRepeat,note:document.getElementById("e-note").value.trim()});
-    persist(); closeModal("event"); render();
+      repeat:eRepeat,note:document.getElementById("e-note").value.trim()
+    };
+    if(ev) events=events.map(e=>e.id===editId?updated:e);
+    else events.push(updated);
+    persist();closeModal("event");render();
   };
+  if(ev){
+    document.getElementById("e-del").onclick=()=>{
+      events=events.filter(e=>e.id!==editId);persist();closeModal("event");render();
+    };
+  }
 }
 
-// ─── Expense Modal ────────────────────────────────────────────────────────────
-function renderExpenseModal(){
-  const todayStr = `${TY}-${String(TM+1).padStart(2,"0")}-${String(TD).padStart(2,"0")}`;
-  document.getElementById("sh-expense").innerHTML = `
+// ── Expense Modal (create + edit) ─────────────────────────────────────────────
+function renderExpenseModal(editId){
+  const ex=editId?expenses.find(e=>e.id===editId):null;
+  const todayStr=`${TY}-${String(TM+1).padStart(2,"0")}-${String(TD).padStart(2,"0")}`;
+  document.getElementById("sh-expense").innerHTML=`
   <div class="sheet-handle"></div>
-  <div class="sheet-title">REGISTRAR GASTO</div>
-  <div class="fg"><div class="fg-label">Monto MXN *</div><input class="inp" id="x-amt" type="number" placeholder="Ej. 350"/></div>
+  <div class="sheet-title">${ex?"EDITAR GASTO":"REGISTRAR GASTO"}</div>
+  <div class="fg"><div class="fg-label">Monto MXN *</div><input class="inp" id="x-amt" type="number" value="${ex?ex.amount:""}" placeholder="Ej. 350"/></div>
   <div class="fg-row">
     <div class="fg" style="flex:1"><div class="fg-label">Categoría</div>
-      <select class="inp" id="x-cat">${EXP_CATS.map(c=>`<option>${c}</option>`).join("")}</select></div>
-    <div class="fg" style="flex:1"><div class="fg-label">Fecha</div><input class="inp" id="x-date" type="date" value="${todayStr}"/></div>
+      <select class="inp" id="x-cat">${EXP_CATS.map(c=>`<option${ex&&ex.cat===c?" selected":""}>${c}</option>`).join("")}</select></div>
+    <div class="fg" style="flex:1"><div class="fg-label">Fecha</div><input class="inp" id="x-date" type="date" value="${ex?ex.date:todayStr}"/></div>
   </div>
-  <div class="fg"><div class="fg-label">Descripción (opcional)</div><input class="inp" id="x-desc" placeholder="Ej. Cena, Uber..."/></div>
+  <div class="fg"><div class="fg-label">Descripción (opcional)</div><input class="inp" id="x-desc" value="${ex?ex.desc:""}" placeholder="Ej. Cena, Uber..."/></div>
   <div class="btn-row">
+    ${ex?`<button class="btn btn-red" id="x-del">🗑</button>`:""}
     <button class="btn btn-sec" onclick="closeModal('expense')">Cancelar</button>
-    <button class="btn btn-gold" style="flex:2" id="x-save">Guardar gasto</button>
+    <button class="btn btn-gold" style="flex:2" id="x-save">${ex?"Guardar cambios":"Guardar gasto"}</button>
   </div>`;
   document.getElementById("x-save").onclick=()=>{
     const amt=parseFloat(document.getElementById("x-amt").value);
-    if(!amt||isNaN(amt)) return;
-    expenses.unshift({id:uid(),amount:amt,cat:document.getElementById("x-cat").value,
-      desc:document.getElementById("x-desc").value.trim(),date:document.getElementById("x-date").value});
-    persist(); closeModal("expense"); render();
+    if(!amt||isNaN(amt))return;
+    const updated={id:ex?ex.id:uid(),amount:amt,cat:document.getElementById("x-cat").value,
+      desc:document.getElementById("x-desc").value.trim(),date:document.getElementById("x-date").value};
+    if(ex) expenses=expenses.map(e=>e.id===editId?updated:e);
+    else expenses.unshift(updated);
+    persist();closeModal("expense");render();
   };
+  if(ex){
+    document.getElementById("x-del").onclick=()=>{
+      expenses=expenses.filter(e=>e.id!==editId);persist();closeModal("expense");render();
+    };
+  }
 }
 
-// ─── Note Modal ───────────────────────────────────────────────────────────────
+// ── Note Modal ────────────────────────────────────────────────────────────────
 let nColor="#c8a96e";
 function renderNoteModal(){
   nColor="#c8a96e";
-  document.getElementById("sh-note").innerHTML = `
+  document.getElementById("sh-note").innerHTML=`
   <div class="sheet-handle"></div>
   <div class="sheet-title">NUEVA NOTA</div>
   <div class="fg"><div class="fg-label">Título (opcional)</div><input class="inp" id="n-title" placeholder="Ej. Ideas, Reflexiones..."/></div>
   <div class="fg"><div class="fg-label">Contenido</div><textarea class="inp" id="n-body" style="height:120px" placeholder="Escribe lo que sea..."></textarea></div>
   <div class="fg"><div class="fg-label">Color</div>
-    <div class="color-dots">${NOTE_COLORS.map(c=>`<div class="cdot" data-nc="${c}" style="background:${c};border-color:${c==="#c8a96e"?"white":"transparent"}"></div>`).join("")}</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">${NOTE_COLORS.map(c=>`<div class="cdot" data-nc="${c}" style="background:${c};border-color:${c==="#c8a96e"?"white":"transparent"}"></div>`).join("")}</div>
   </div>
   <div class="btn-row">
     <button class="btn btn-sec" onclick="closeModal('note')">Cancelar</button>
     <button class="btn btn-gold" style="flex:2" id="n-save">Guardar nota</button>
   </div>`;
   document.querySelectorAll("[data-nc]").forEach(dot=>{
-    dot.onclick=()=>{
-      nColor=dot.dataset.nc;
-      document.querySelectorAll("[data-nc]").forEach(d=>d.style.borderColor=d.dataset.nc===nColor?"white":"transparent");
-    };
+    dot.onclick=()=>{nColor=dot.dataset.nc;document.querySelectorAll("[data-nc]").forEach(d=>d.style.borderColor=d.dataset.nc===nColor?"white":"transparent");};
   });
   document.getElementById("n-save").onclick=()=>{
-    const body=document.getElementById("n-body").value.trim();
-    const title=document.getElementById("n-title").value.trim();
-    if(!body&&!title) return;
+    const body=document.getElementById("n-body").value.trim(),title=document.getElementById("n-title").value.trim();
+    if(!body&&!title)return;
     notes.unshift({id:uid(),title,body,color:nColor,pinned:false,updatedAt:Date.now()});
-    persist(); closeModal("note"); render();
+    persist();closeModal("note");render();
   };
 }
 
-// ─── Note Detail ──────────────────────────────────────────────────────────────
+// ── Note Detail ───────────────────────────────────────────────────────────────
 function renderNoteDetail(){
   const n=notes.find(n=>n.id===activeNoteId);
-  if(!n) return;
+  if(!n)return;
   document.getElementById("sh-notedetail").innerHTML=`
   <div class="sheet-handle"></div>
   <div class="sheet-title" style="color:${n.color}">${n.title||"Nota"}</div>
@@ -766,18 +793,12 @@ function renderNoteDetail(){
   document.getElementById("nd-close").onclick=()=>{
     const body=document.getElementById("nd-body").value;
     notes=notes.map(nx=>nx.id===activeNoteId?{...nx,body,updatedAt:Date.now()}:nx);
-    persist(); closeModal("notedetail"); render();
+    persist();closeModal("notedetail");render();
   };
-  document.getElementById("nd-pin").onclick=()=>{
-    notes=notes.map(nx=>nx.id===activeNoteId?{...nx,pinned:!nx.pinned}:nx);
-    persist(); renderNoteDetail(); render();
-  };
-  document.getElementById("nd-del").onclick=()=>{
-    notes=notes.filter(nx=>nx.id!==activeNoteId); persist(); closeModal("notedetail"); render();
-  };
+  document.getElementById("nd-pin").onclick=()=>{notes=notes.map(nx=>nx.id===activeNoteId?{...nx,pinned:!nx.pinned}:nx);persist();renderNoteDetail();render();};
+  document.getElementById("nd-del").onclick=()=>{notes=notes.filter(nx=>nx.id!==activeNoteId);persist();closeModal("notedetail");render();};
 }
 
-// ─── Init ─────────────────────────────────────────────────────────────────────
 render();
 </script>
 </body>
