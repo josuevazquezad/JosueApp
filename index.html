@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
 <meta charset="UTF-8"/>
@@ -19,9 +20,12 @@ input,select,textarea{font-family:'DM Sans',sans-serif;color-scheme:dark;-webkit
 .hdr-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;}
 .brand{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:4px;color:#c8a96e;line-height:1;}
 .brand-sub{font-size:10px;color:#333;letter-spacing:2px;margin-top:2px;}
-.hdr-date{text-align:right;}
-.hdr-date-lbl{font-size:10px;color:#333;letter-spacing:1px;}
-.hdr-date-val{font-family:'Bebas Neue',sans-serif;font-size:15px;color:#555;letter-spacing:1px;}
+.hdr-right{text-align:right;}
+.sync-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px;background:#555;}
+.sync-dot.ok{background:#5aaa7e;} .sync-dot.saving{background:#f59e0b;animation:pulse .8s infinite;}
+.sync-dot.err{background:#e05a5a;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hdr-date-val{font-family:'Bebas Neue',sans-serif;font-size:14px;color:#555;letter-spacing:1px;}
 .tabs{display:flex;}
 .tab{flex:1;padding:9px 2px;font-size:11px;font-weight:600;border:none;border-bottom:2px solid transparent;background:transparent;color:#555;cursor:pointer;white-space:nowrap;font-family:'DM Sans',sans-serif;transition:color .15s;}
 .tab.on{color:#c8a96e;border-bottom-color:#c8a96e;}
@@ -31,20 +35,18 @@ input,select,textarea{font-family:'DM Sans',sans-serif;color-scheme:dark;-webkit
 .stat-box{background:#161616;border:1px solid #1e1e1e;border-radius:12px;padding:11px 6px;text-align:center;}
 .stat-n{font-family:'Bebas Neue',sans-serif;font-size:28px;line-height:1;}
 .stat-l{font-size:9px;color:#444;letter-spacing:.5px;margin-top:2px;}
-/* Task card — now vertical for subtasks */
 .task-card{background:#161616;border:1px solid #1e1e1e;border-radius:12px;padding:12px 13px;margin-bottom:7px;border-left:3px solid var(--c);}
 .task-card-top{display:flex;align-items:center;gap:11px;cursor:pointer;}
 .task-subtasks{padding:8px 0 2px 31px;border-top:1px solid #1e1e1e;margin-top:10px;}
 .task-sub-row{display:flex;align-items:center;gap:8px;padding:5px 0;}
-.task-sub-title{font-size:12px;flex:1;}
-.card{background:#161616;border:1px solid #1e1e1e;border-radius:12px;padding:12px 13px;margin-bottom:7px;display:flex;align-items:center;gap:11px;cursor:pointer;}
+.card{background:#161616;border:1px solid #1e1e1e;border-radius:12px;padding:12px 13px;margin-bottom:7px;display:flex;align-items:center;gap:11px;}
 .card-bl{border-left:3px solid var(--c);}
 .card-title{font-size:14px;font-weight:500;}
 .card-sub{font-size:11px;color:#555;margin-top:2px;}
 .pill{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;letter-spacing:.3px;white-space:nowrap;}
-.chk{width:20px;height:20px;border-radius:50%;flex-shrink:0;cursor:pointer;border:2px solid #2c2c2c;display:flex;align-items:center;justify-content:center;transition:all .15s;}
+.chk{border-radius:50%;flex-shrink:0;cursor:pointer;border:2px solid #2c2c2c;display:flex;align-items:center;justify-content:center;transition:all .15s;}
 .chk.done{background:#5aaa7e;border-color:#5aaa7e;}
-.chk-mark{font-size:9px;color:white;font-weight:700;display:none;}
+.chk-mark{color:white;font-weight:700;display:none;}
 .chk.done .chk-mark{display:block;}
 .btn{padding:12px 18px;border-radius:10px;cursor:pointer;font-size:14px;font-weight:700;font-family:'DM Sans',sans-serif;border:none;transition:opacity .15s;}
 .btn:active{opacity:.75;}
@@ -69,7 +71,6 @@ textarea.inp{resize:none;line-height:1.6;}
 .toggle-box{width:20px;height:20px;border-radius:6px;border:2px solid #2c2c2c;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;}
 .toggle-box.on{background:#c8a96e;border-color:#c8a96e;}
 .toggle-box.on::after{content:'✓';font-size:11px;color:#0a0a0a;font-weight:700;}
-.toggle-lbl{font-size:13px;color:#f0ece4;}
 .sum-card{background:linear-gradient(135deg,#181208,#181818);border:1px solid #c8a96e22;border-radius:16px;padding:16px 18px;margin-bottom:14px;}
 .sum-lbl{font-size:10px;color:#444;letter-spacing:1px;margin-bottom:3px;}
 .sum-amt{font-family:'Bebas Neue',sans-serif;font-size:36px;color:#c8a96e;letter-spacing:2px;line-height:1;}
@@ -92,10 +93,10 @@ textarea.inp{resize:none;line-height:1.6;}
 .bar-fill{height:100%;background:#c8a96e;border-radius:4px;}
 .bar-val{font-size:12px;color:#c8a96e;min-width:60px;text-align:right;}
 .del-btn{background:none;border:none;color:#333;cursor:pointer;font-size:14px;padding:0;flex-shrink:0;}
-/* Swipeable expense rows */
+/* Swipe */
 .swipe-wrap{position:relative;overflow:hidden;border-radius:12px;margin-bottom:7px;}
 .swipe-actions{position:absolute;right:0;top:0;bottom:0;display:flex;align-items:stretch;}
-.swipe-btn{display:flex;align-items:center;justify-content:center;width:64px;border:none;cursor:pointer;font-size:18px;font-weight:700;}
+.swipe-btn{display:flex;align-items:center;justify-content:center;width:64px;border:none;cursor:pointer;font-size:18px;}
 .swipe-edit{background:#5a9de0;color:white;}
 .swipe-del{background:#e05a5a;color:white;}
 .swipe-content{background:#161616;border:1px solid #1e1e1e;border-radius:12px;padding:12px 13px;display:flex;align-items:center;gap:11px;position:relative;transition:transform .2s ease;will-change:transform;}
@@ -116,9 +117,7 @@ textarea.inp{resize:none;line-height:1.6;}
 .legend-item{display:flex;align-items:center;gap:4px;font-size:10px;color:#444;}
 .legend-dot{width:6px;height:6px;border-radius:50%;}
 .day-detail{background:#161616;border:1px solid #1e1e1e;border-radius:14px;padding:14px;margin-bottom:12px;}
-/* Event row — tappable for edit */
-.ev-row{background:#161616;border:1px solid #1e1e1e;border-radius:12px;padding:11px 13px;margin-bottom:7px;display:flex;align-items:center;gap:11px;cursor:pointer;transition:background .15s;}
-.ev-row:active{background:#1e1e1e;}
+.ev-row{background:#161616;border:1px solid #1e1e1e;border-radius:12px;padding:11px 13px;margin-bottom:7px;display:flex;align-items:center;gap:11px;cursor:pointer;}
 .ev-row-bl{border-left:3px solid var(--c);}
 .up-days{font-family:'Bebas Neue',sans-serif;font-size:16px;}
 .cat-sec{margin-bottom:16px;}
@@ -126,8 +125,10 @@ textarea.inp{resize:none;line-height:1.6;}
 .cat-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
 .cat-name{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:1.5px;color:#f0ece4;opacity:.55;}
 .cat-count{background:#1e1e1e;color:#444;border-radius:20px;padding:1px 8px;font-size:9px;margin-left:auto;}
-/* Edit badge */
-.edit-hint{font-size:10px;color:#444;margin-left:auto;flex-shrink:0;}
+.edit-hint{font-size:12px;color:#444;margin-left:auto;flex-shrink:0;}
+.loading{display:flex;align-items:center;justify-content:center;height:60vh;flex-direction:column;gap:12px;}
+.loading-spinner{width:32px;height:32px;border:3px solid #2a2a2a;border-top-color:#c8a96e;border-radius:50%;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
@@ -135,7 +136,10 @@ textarea.inp{resize:none;line-height:1.6;}
   <div id="hdr">
     <div class="hdr-top">
       <div><div class="brand">JOSUÉ</div><div class="brand-sub">MI ESPACIO</div></div>
-      <div class="hdr-date"><div class="hdr-date-lbl">HOY</div><div class="hdr-date-val" id="hdr-date"></div></div>
+      <div class="hdr-right">
+        <div style="font-size:10px;color:#444;margin-bottom:2px"><span class="sync-dot" id="sync-dot"></span><span id="sync-txt">Conectando...</span></div>
+        <div class="hdr-date-val" id="hdr-date"></div>
+      </div>
     </div>
     <div class="tabs">
       <button class="tab on" data-tab="tasks">✅ Tareas</button>
@@ -144,10 +148,11 @@ textarea.inp{resize:none;line-height:1.6;}
       <button class="tab" data-tab="notes">📝 Notas</button>
     </div>
   </div>
-  <div id="content"></div>
+  <div id="content"><div class="loading"><div class="loading-spinner"></div><div style="color:#555;font-size:13px">Cargando datos...</div></div></div>
 </div>
 
 <!-- MODALS -->
+
 <div class="overlay" id="ov-task"><div class="sheet" id="sh-task"></div></div>
 <div class="overlay" id="ov-taskdetail"><div class="sheet" id="sh-taskdetail"></div></div>
 <div class="overlay" id="ov-event"><div class="sheet" id="sh-event"></div></div>
@@ -155,7 +160,25 @@ textarea.inp{resize:none;line-height:1.6;}
 <div class="overlay" id="ov-note"><div class="sheet" id="sh-note"></div></div>
 <div class="overlay" id="ov-notedetail"><div class="sheet" id="sh-notedetail"></div></div>
 
-<script>
+<!-- Firebase -->
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, doc, getDoc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyApKfNItoiMr7glE6cE3HP8QXvPqCbNcww",
+  authDomain: "josueapp-355e6.firebaseapp.com",
+  projectId: "josueapp-355e6",
+  storageBucket: "josueapp-355e6.firebasestorage.app",
+  messagingSenderId: "970229141281",
+  appId: "1:970229141281:web:22719a17f1f1af5e06b860"
+};
+
+const fbApp = initializeApp(firebaseConfig);
+const db = getFirestore(fbApp);
+
+// ─── Constants ────────────────────────────────────────────────────────────────
 const MONTHS=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
 const DAYS=["D","L","M","M","J","V","S"];
 const now=new Date(),TD=now.getDate(),TM=now.getMonth(),TY=now.getFullYear();
@@ -172,43 +195,112 @@ const TASK_CATS={"Personal":"#f472b6","Trabajo":"#c8a96e","Salud":"#5aaa7e","Fin
 const EXP_CATS=["Comida","Transporte","Entretenimiento","Ropa","Salud","Servicios","Negocio","Otro"];
 const NOTE_COLORS=["#c8a96e","#5a9de0","#5aaa7e","#f472b6","#c084fc","#f59e0b","#94a3b8"];
 
-function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7);}
-function fmtMXN(n){return"$"+Number(n).toLocaleString("es-MX",{minimumFractionDigits:0});}
-function daysInMonth(y,m){return new Date(y,m+1,0).getDate();}
-function firstDay(y,m){return new Date(y,m,1).getDay();}
-function load(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch{return d;}}
-function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch{}}
-
-let tasks=load("josue-tasks-v2",[
+const INIT_TASKS=[
   {id:"t1",title:"Registro de marca IMPI",cat:"Trabajo",prio:"alta",done:false,note:"impi.gob.mx — Clase 37 y/o 35",subtasks:[{id:"s1",title:"Buscar apoderado",done:false},{id:"s2",title:"Preparar documentos",done:false}]},
   {id:"t2",title:"Landing page Alpha Detailing",cat:"Trabajo",prio:"alta",done:false,note:"CTA WhatsApp, galería, cotizador",subtasks:[]},
   {id:"t3",title:"Configurar bots WhatsApp / IG / FB",cat:"Trabajo",prio:"media",done:false,note:"",subtasks:[{id:"s3",title:"WhatsApp",done:false},{id:"s4",title:"Instagram DM",done:false},{id:"s5",title:"Messenger",done:false}]},
-]);
-let events=load("josue-events-v2",[
+];
+const INIT_EVENTS=[
   {id:"e1",title:"Corte BBVA",day:5,month:-1,year:null,repeat:true,type:"corte",amount:null,note:""},
   {id:"e2",title:"Pago BBVA",day:20,month:-1,year:null,repeat:true,type:"pago",amount:null,note:"Fecha límite"},
   {id:"e3",title:"Netflix",day:12,month:-1,year:null,repeat:true,type:"suscripcion",amount:219,note:""},
   {id:"e4",title:"Spotify",day:8,month:-1,year:null,repeat:true,type:"suscripcion",amount:109,note:""},
-]);
-let notes=load("josue-notes-v2",[
+];
+const INIT_NOTES=[
   {id:"n1",title:"Ideas negocio",body:"- Paquete mantenimiento mensual\n- Alianza con agencias de autos\n- Reels del proceso de ceramic coating",color:"#c8a96e",pinned:true,updatedAt:Date.now()},
-]);
-let expenses=load("josue-expenses-v2",[]);
+];
 
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
+function fmtMXN(n){return"$"+Number(n).toLocaleString("es-MX",{minimumFractionDigits:0});}
+function daysInMonth(y,m){return new Date(y,m+1,0).getDate();}
+function firstDay(y,m){return new Date(y,m,1).getDay();}
+function priColor(p){return p==="alta"?"#e05a5a":p==="media"?"#f59e0b":"#5aaa7e";}
+function priEmoji(p){return p==="alta"?"🔴":p==="media"?"🟡":"🟢";}
+function pill(color,text){return`<span class="pill" style="background:${color}22;color:${color}">${text}</span>`;}
+
+// ─── State ────────────────────────────────────────────────────────────────────
+let tasks=[],events=[],notes=[],expenses=[];
 let curY=TY,curM=TM,selDay=null;
 let activeTab="tasks",finTab="gastos";
 let activeTaskId=null,activeNoteId=null,activeEventId=null,activeExpenseId=null;
+let saveTimer=null,loaded=false;
 
-function persist(){save("josue-tasks-v2",tasks);save("josue-events-v2",events);save("josue-notes-v2",notes);save("josue-expenses-v2",expenses);}
+// ─── Firebase sync ────────────────────────────────────────────────────────────
+function syncStatus(state){
+  const dot=document.getElementById("sync-dot"),txt=document.getElementById("sync-txt");
+  if(!dot)return;
+  dot.className="sync-dot"+(state==="ok"?" ok":state==="saving"?" saving":state==="err"?" err":"");
+  txt.textContent=state==="ok"?"☁ Sincronizado":state==="saving"?"Guardando...":state==="err"?"Sin conexión":"Conectando...";
+}
+
+async function loadFromFirebase(){
+  try{
+    const docRef=doc(db,"josue","data");
+    const snap=await getDoc(docRef);
+    if(snap.exists()){
+      const d=snap.data();
+      tasks=d.tasks||INIT_TASKS;
+      events=d.events||INIT_EVENTS;
+      notes=d.notes||INIT_NOTES;
+      expenses=d.expenses||[];
+    } else {
+      tasks=INIT_TASKS; events=INIT_EVENTS; notes=INIT_NOTES; expenses=[];
+      await saveToFirebase();
+    }
+    syncStatus("ok");
+  } catch(e){
+    console.error(e);
+    syncStatus("err");
+    // fallback to localStorage
+    try{tasks=JSON.parse(localStorage.getItem("j-tasks")||"null")||INIT_TASKS;}catch{tasks=INIT_TASKS;}
+    try{events=JSON.parse(localStorage.getItem("j-events")||"null")||INIT_EVENTS;}catch{events=INIT_EVENTS;}
+    try{notes=JSON.parse(localStorage.getItem("j-notes")||"null")||INIT_NOTES;}catch{notes=INIT_NOTES;}
+    try{expenses=JSON.parse(localStorage.getItem("j-expenses")||"null")||[];}catch{expenses=[];}
+  }
+  loaded=true;
+  render();
+}
+
+async function saveToFirebase(){
+  syncStatus("saving");
+  try{
+    await setDoc(doc(db,"josue","data"),{tasks,events,notes,expenses,updatedAt:Date.now()});
+    // also save local backup
+    localStorage.setItem("j-tasks",JSON.stringify(tasks));
+    localStorage.setItem("j-events",JSON.stringify(events));
+    localStorage.setItem("j-notes",JSON.stringify(notes));
+    localStorage.setItem("j-expenses",JSON.stringify(expenses));
+    syncStatus("ok");
+  } catch(e){
+    console.error(e);
+    syncStatus("err");
+  }
+}
+
+function persist(){
+  clearTimeout(saveTimer);
+  saveTimer=setTimeout(saveToFirebase,800); // debounce 800ms
+}
+
+// Real-time listener
+onSnapshot(doc(db,"josue","data"),(snap)=>{
+  if(!loaded)return;
+  if(snap.exists()&&snap.metadata.hasPendingWrites===false){
+    const d=snap.data();
+    tasks=d.tasks||tasks;
+    events=d.events||events;
+    notes=d.notes||notes;
+    expenses=d.expenses||expenses;
+    render();
+  }
+});
+
+// ─── Modal helpers ────────────────────────────────────────────────────────────
 function openModal(id){document.getElementById("ov-"+id).classList.add("open");}
 function closeModal(id){document.getElementById("ov-"+id).classList.remove("open");}
 document.querySelectorAll(".overlay").forEach(ov=>{
   ov.addEventListener("click",e=>{if(e.target===ov)ov.classList.remove("open");});
 });
-
-function priColor(p){return p==="alta"?"#e05a5a":p==="media"?"#f59e0b":"#5aaa7e";}
-function priEmoji(p){return p==="alta"?"🔴":p==="media"?"🟡":"🟢";}
-function pill(color,text){return`<span class="pill" style="background:${color}22;color:${color}">${text}</span>`;}
 
 function eventsForDay(d,y=curY,m=curM){
   return events.filter(ev=>{
@@ -223,6 +315,7 @@ function upcomingThisMonth(){
   return list.sort((a,b)=>a._d-b._d);
 }
 
+// ─── Header ───────────────────────────────────────────────────────────────────
 document.getElementById("hdr-date").textContent=`${TD} ${MONTHS[TM].slice(0,3).toUpperCase()} ${TY}`;
 document.querySelectorAll(".tab").forEach(btn=>{
   btn.addEventListener("click",()=>{
@@ -233,18 +326,18 @@ document.querySelectorAll(".tab").forEach(btn=>{
   });
 });
 
-// ── RENDER ────────────────────────────────────────────────────────────────────
+// ─── RENDER ───────────────────────────────────────────────────────────────────
 function render(){
   const c=document.getElementById("content");
-  if(activeTab==="tasks") c.innerHTML=renderTasks();
-  if(activeTab==="fin")   c.innerHTML=renderFin();
-  if(activeTab==="cal")   c.innerHTML=renderCal();
-  if(activeTab==="notes") c.innerHTML=renderNotes();
+  if(activeTab==="tasks")c.innerHTML=renderTasks();
+  if(activeTab==="fin")c.innerHTML=renderFin();
+  if(activeTab==="cal")c.innerHTML=renderCal();
+  if(activeTab==="notes")c.innerHTML=renderNotes();
   bindEvents();
   initSwipes();
 }
 
-// ══ TASKS — subtareas inline ══
+// ══ TASKS ══
 function renderTasks(){
   const pending=tasks.filter(t=>!t.done);
   const done=tasks.filter(t=>t.done);
@@ -253,7 +346,6 @@ function renderTasks(){
     <div class="stat-box"><div class="stat-n" style="color:#e05a5a">${pending.length}</div><div class="stat-l">PENDIENTES</div></div>
     <div class="stat-box"><div class="stat-n" style="color:#5aaa7e">${done.length}</div><div class="stat-l">LISTAS</div></div>
   </div>`;
-
   Object.keys(TASK_CATS).forEach(cat=>{
     const ct=pending.filter(t=>t.cat===cat);
     if(!ct.length)return;
@@ -265,45 +357,39 @@ function renderTasks(){
     </div>`;
     ct.forEach(t=>{
       const pc=priColor(t.prio);
-      const subDone=t.subtasks.filter(s=>s.done).length;
-      const subTotal=t.subtasks.length;
-      // Subtasks inline
       let subsHtml="";
-      if(subTotal>0){
+      if(t.subtasks.length){
+        const subDone=t.subtasks.filter(s=>s.done).length;
         subsHtml=`<div class="task-subtasks">`;
         t.subtasks.forEach(s=>{
           subsHtml+=`<div class="task-sub-row">
-            <div class="chk${s.done?" done":""}" style="width:16px;height:16px;flex-shrink:0"
-              data-action="toggle-sub" data-tid="${t.id}" data-sid="${s.id}">
-              <span class="chk-mark" style="font-size:8px">✓</span>
-            </div>
-            <div class="task-sub-title" style="text-decoration:${s.done?"line-through":"none"};color:${s.done?"#555":"#aaa"}">${s.title}</div>
+            <div class="chk${s.done?" done":""}" style="width:16px;height:16px" data-action="toggle-sub" data-tid="${t.id}" data-sid="${s.id}">
+              <span class="chk-mark" style="font-size:8px">✓</span></div>
+            <div style="flex:1;font-size:12px;text-decoration:${s.done?"line-through":"none"};color:${s.done?"#555":"#aaa"}">${s.title}</div>
           </div>`;
         });
-        subsHtml+=`<div style="font-size:10px;color:#555;margin-top:4px">${subDone}/${subTotal} completadas
-          <span class="prog" style="width:44px;margin-left:6px"><span class="prog-fill" style="width:${subTotal?subDone/subTotal*100:0}%;background:${color}"></span></span>
+        subsHtml+=`<div style="font-size:10px;color:#555;margin-top:4px">${subDone}/${t.subtasks.length} completadas
+          <span class="prog" style="width:44px;margin-left:6px"><span class="prog-fill" style="width:${t.subtasks.length?subDone/t.subtasks.length*100:0}%;background:${color}"></span></span>
         </div></div>`;
       }
       h+=`<div class="task-card" style="--c:${pc}">
         <div class="task-card-top" data-action="task-detail" data-id="${t.id}">
-          <div class="chk${t.done?" done":""}" data-action="toggle-task" data-id="${t.id}"><span class="chk-mark">✓</span></div>
+          <div class="chk${t.done?" done":""}" style="width:20px;height:20px" data-action="toggle-task" data-id="${t.id}"><span class="chk-mark" style="font-size:9px">✓</span></div>
           <div style="flex:1;min-width:0">
             <div class="card-title">${t.title}</div>
-            ${t.note?`<div class="card-sub" style="margin-top:2px">${t.note}</div>`:""}
+            ${t.note?`<div class="card-sub">${t.note}</div>`:""}
           </div>
           ${pill(pc,priEmoji(t.prio)+" "+t.prio)}
-        </div>
-        ${subsHtml}
+        </div>${subsHtml}
       </div>`;
     });
     h+=`</div>`;
   });
-
   if(done.length){
-    h+=`<div class="sh" style="margin-top:4px">✅ COMPLETADAS</div>`;
+    h+=`<div class="sh">✅ COMPLETADAS</div>`;
     done.forEach(t=>{
-      h+=`<div class="card" style="opacity:.38">
-        <div class="chk done" data-action="toggle-task" data-id="${t.id}"><span class="chk-mark">✓</span></div>
+      h+=`<div class="card" style="opacity:.38;cursor:default">
+        <div class="chk done" style="width:20px;height:20px" data-action="toggle-task" data-id="${t.id}"><span class="chk-mark" style="font-size:9px">✓</span></div>
         <div style="flex:1;font-size:13px;text-decoration:line-through">${t.title}</div>
         <button class="del-btn" data-action="del-task" data-id="${t.id}">🗑</button>
       </div>`;
@@ -319,7 +405,6 @@ function renderFin(){
     <button class="sub-tab${finTab==="gastos"?" on":""}" data-action="fin-tab" data-tab="gastos">💸 Gastos</button>
     <button class="sub-tab${finTab==="recurrentes"?" on":""}" data-action="fin-tab" data-tab="recurrentes">🔄 Recurrentes</button>
   </div>`;
-
   if(finTab==="gastos"){
     const thisM=expenses.filter(e=>{const d=new Date(e.date);return d.getMonth()===TM&&d.getFullYear()===TY;});
     const total=thisM.reduce((s,e)=>s+e.amount,0);
@@ -328,7 +413,6 @@ function renderFin(){
       <div class="sum-amt">${fmtMXN(total)}<span style="font-size:13px;color:#444"> MXN</span></div>
       <div class="sum-note">${thisM.length} registros</div>
     </div>`;
-
     const byCat={};
     EXP_CATS.forEach(c=>{byCat[c]=thisM.filter(e=>e.cat===c).reduce((s,e)=>s+e.amount,0);});
     const hasCat=Object.entries(byCat).filter(([,v])=>v>0).sort(([,a],[,b])=>b-a);
@@ -342,11 +426,8 @@ function renderFin(){
       });
       h+=`</div>`;
     }
-
     h+=`<div class="sh">REGISTROS <span style="font-size:9px;opacity:.5">← desliza para editar/borrar</span></div>`;
-    if(!expenses.length) h+=`<div style="color:#444;font-size:13px;margin-bottom:14px">Sin gastos registrados.</div>`;
-
-    // Swipeable rows
+    if(!expenses.length)h+=`<div style="color:#444;font-size:13px;margin-bottom:14px">Sin gastos registrados.</div>`;
     expenses.slice(0,40).forEach(e=>{
       const d=new Date(e.date);
       h+=`<div class="swipe-wrap" data-swipe-id="${e.id}">
@@ -365,13 +446,11 @@ function renderFin(){
     });
     h+=`<button class="btn btn-gold btn-full" data-action="open-expense" style="margin-top:8px">+ Registrar gasto</button>`;
   }
-
   if(finTab==="recurrentes"){
     const fixed=events.filter(ev=>(ev.type==="suscripcion"||ev.type==="pago")&&ev.amount).reduce((s,ev)=>s+ev.amount,0);
     h+=`<div class="sum-card">
       <div class="sum-lbl">FIJO MENSUAL ESTIMADO</div>
       <div class="sum-amt">${fmtMXN(fixed)}<span style="font-size:13px;color:#444"> MXN</span></div>
-      <div class="sum-note">Suscripciones + pagos con monto</div>
     </div>`;
     Object.entries(EV_TYPES).forEach(([tk,tv])=>{
       const evs=[...events].filter(ev=>ev.type===tk).sort((a,b)=>a.day-b.day);
@@ -383,8 +462,7 @@ function renderFin(){
       evs.forEach(ev=>{
         h+=`<div class="ev-row ev-row-bl" style="--c:${tv.color}" data-action="edit-event" data-id="${ev.id}">
           <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:${tv.color};min-width:26px;text-align:center">${ev.day}</div>
-          <div style="flex:1">
-            <div class="card-title">${ev.title}</div>
+          <div style="flex:1"><div class="card-title">${ev.title}</div>
             <div class="card-sub">${ev.repeat?"🔁 Mensual":ev.month>=0?MONTHS[ev.month]:""}${ev.note?" · "+ev.note:""}</div>
           </div>
           ${ev.amount?`<div style="font-family:'Bebas Neue',sans-serif;font-size:15px;color:${tv.color}">${fmtMXN(ev.amount)}</div>`:""}
@@ -407,49 +485,43 @@ function renderCal(){
   for(let d=1;d<=dim;d++){
     const isToday=d===TD&&curM===TM&&curY===TY;
     const isSel=selDay===d;
-    const dayEvs=eventsForDay(d);
-    const dots=dayEvs.slice(0,4).map(ev=>`<div class="cal-dot" style="background:${(EV_TYPES[ev.type]||EV_TYPES.otro).color}"></div>`).join("");
+    const dots=eventsForDay(d).slice(0,4).map(ev=>`<div class="cal-dot" style="background:${(EV_TYPES[ev.type]||EV_TYPES.otro).color}"></div>`).join("");
     cells+=`<div class="cal-cell${isToday?" today":""}${isSel?" selected":""}" data-action="cal-day" data-d="${d}">
       <div class="cal-cell-n" style="color:${isToday?"#c8a96e":"#d0ccc4"}">${d}</div>
       <div class="cal-dots">${dots}</div>
     </div>`;
   }
-
   let legend=`<div class="legend">`;
-  Object.entries(EV_TYPES).forEach(([,v])=>{legend+=`<div class="legend-item"><div class="legend-dot" style="background:${v.color}"></div>${v.emoji}</div>`;});
+  Object.entries(EV_TYPES).forEach(([,v])=>{legend+=`<div class="legend-item"><div class="legend-dot" style="background:${v.color}"></div>${v.emoji} ${v.label}</div>`;});
   legend+=`</div>`;
 
   let selDetail="";
   if(selDay){
     const sevs=eventsForDay(selDay);
-    selDetail=`<div class="day-detail">
-      <div class="sh" style="margin-bottom:10px">${selDay} DE ${MONTHS[curM].toUpperCase()}</div>`;
+    selDetail=`<div class="day-detail"><div class="sh" style="margin-bottom:10px">${selDay} DE ${MONTHS[curM].toUpperCase()}</div>`;
     if(!sevs.length)selDetail+=`<div style="color:#444;font-size:13px">Sin eventos este día.</div>`;
     sevs.forEach(ev=>{
       const m=EV_TYPES[ev.type]||EV_TYPES.otro;
       selDetail+=`<div class="ev-row" style="margin-bottom:7px" data-action="edit-event" data-id="${ev.id}">
         <span style="font-size:16px">${m.emoji}</span>
-        <div style="flex:1">
-          <div style="font-size:14px;font-weight:500">${ev.title}</div>
-          ${ev.amount?`<div style="font-size:11px;color:${m.color};margin-top:1px">${fmtMXN(ev.amount)} MXN</div>`:""}
-          ${ev.note?`<div style="font-size:11px;color:#555;margin-top:1px">${ev.note}</div>`:""}
-        </div>
-        <span class="edit-hint">✏️</span>
+        <div style="flex:1"><div style="font-size:14px;font-weight:500">${ev.title}</div>
+          ${ev.amount?`<div style="font-size:11px;color:${m.color}">${fmtMXN(ev.amount)} MXN</div>`:""}
+          ${ev.note?`<div style="font-size:11px;color:#555">${ev.note}</div>`:""}
+        </div><span class="edit-hint">✏️</span>
       </div>`;
     });
     selDetail+=`</div>`;
   }
 
   const upcoming=upcomingThisMonth().filter(e=>e._d>=TD);
-  let upHtml=`<div class="sh">PRÓXIMOS EN ${MONTHS[curM].toUpperCase()} <span style="font-size:9px;opacity:.5">· toca para editar</span></div>`;
+  let upHtml=`<div class="sh">PRÓXIMOS · toca para editar</div>`;
   if(!upcoming.length)upHtml+=`<div style="color:#444;font-size:13px;margin-bottom:12px">Sin eventos próximos.</div>`;
   upcoming.forEach(ev=>{
     const m=EV_TYPES[ev.type]||EV_TYPES.otro;
     const dl=ev._d-TD;
     upHtml+=`<div class="ev-row ev-row-bl" style="--c:${m.color}" data-action="edit-event" data-id="${ev.id}">
       <div style="font-size:17px">${m.emoji}</div>
-      <div style="flex:1">
-        <div class="card-title">${ev.title}</div>
+      <div style="flex:1"><div class="card-title">${ev.title}</div>
         <div class="card-sub">Día ${ev._d}${ev.repeat?" · Mensual":""}${ev.amount?" · "+fmtMXN(ev.amount)+" MXN":""}</div>
       </div>
       <div class="up-days" style="color:${dl<=0?"#e05a5a":dl<=5?"#f59e0b":"#555"}">${dl<=0?"HOY":dl+"d"}</div>
@@ -471,37 +543,25 @@ function renderCal(){
 function renderNotes(){
   const pinned=notes.filter(n=>n.pinned),unpinned=notes.filter(n=>!n.pinned);
   let h="";
-  if(pinned.length){
-    h+=`<div class="sh">📌 FIJADAS</div><div class="note-grid">`;
-    pinned.forEach(n=>{h+=noteCard(n);});
-    h+=`</div>`;
-  }
-  if(unpinned.length){
-    h+=`<div class="sh">TODAS</div><div class="note-grid">`;
-    unpinned.forEach(n=>{h+=noteCard(n);});
-    h+=`</div>`;
-  }
+  function noteCard(n){return`<div class="note-card" style="border-top:3px solid ${n.color}" data-action="note-detail" data-id="${n.id}">
+    ${n.title?`<div class="note-card-title" style="color:${n.color}">${n.title}</div>`:""}
+    <div class="note-card-body">${n.body||'<span style="color:#333;font-style:italic">Sin contenido</span>'}</div>
+  </div>`;}
+  if(pinned.length){h+=`<div class="sh">📌 FIJADAS</div><div class="note-grid">`;pinned.forEach(n=>{h+=noteCard(n);});h+=`</div>`;}
+  if(unpinned.length){h+=`<div class="sh">TODAS</div><div class="note-grid">`;unpinned.forEach(n=>{h+=noteCard(n);});h+=`</div>`;}
   if(!notes.length)h+=`<div style="color:#444;font-size:13px;margin-bottom:14px">Sin notas todavía.</div>`;
   h+=`<button class="btn btn-gold btn-full" data-action="open-note">+ Nueva nota</button>`;
   return h;
 }
-function noteCard(n){
-  return`<div class="note-card" style="border-top:3px solid ${n.color}" data-action="note-detail" data-id="${n.id}">
-    ${n.title?`<div class="note-card-title" style="color:${n.color}">${n.title}</div>`:""}
-    <div class="note-card-body">${n.body||'<span style="color:#333;font-style:italic">Sin contenido</span>'}</div>
-  </div>`;
-}
 
-// ── Bind ──────────────────────────────────────────────────────────────────────
+// ─── Events ───────────────────────────────────────────────────────────────────
 function bindEvents(){
   document.getElementById("content").addEventListener("click",handleAction);
 }
-
 function handleAction(e){
   const el=e.target.closest("[data-action]");
   if(!el)return;
   const action=el.dataset.action,id=el.dataset.id;
-
   if(action==="toggle-task"){e.stopPropagation();tasks=tasks.map(t=>t.id===id?{...t,done:!t.done}:t);persist();render();}
   if(action==="toggle-sub"){
     e.stopPropagation();
@@ -512,11 +572,11 @@ function handleAction(e){
   if(action==="del-task"){e.stopPropagation();tasks=tasks.filter(t=>t.id!==id);persist();render();}
   if(action==="open-task"){renderTaskModal();openModal("task");}
   if(action==="task-detail"){activeTaskId=id;renderTaskDetail();openModal("taskdetail");}
-  if(action==="edit-event"){activeEventId=id;renderEventModal(id);openModal("event");}
-  if(action==="open-event"){activeEventId=null;renderEventModal(null);openModal("event");}
+  if(action==="edit-event"){renderEventModal(id);openModal("event");}
+  if(action==="open-event"){renderEventModal(null);openModal("event");}
   if(action==="del-expense"){expenses=expenses.filter(ex=>ex.id!==id);persist();render();}
-  if(action==="edit-expense"){activeExpenseId=id;renderExpenseModal(id);openModal("expense");}
-  if(action==="open-expense"){activeExpenseId=null;renderExpenseModal(null);openModal("expense");}
+  if(action==="edit-expense"){renderExpenseModal(id);openModal("expense");}
+  if(action==="open-expense"){renderExpenseModal(null);openModal("expense");}
   if(action==="open-note"){renderNoteModal();openModal("note");}
   if(action==="note-detail"){activeNoteId=id;renderNoteDetail();openModal("notedetail");}
   if(action==="fin-tab"){finTab=el.dataset.tab;render();}
@@ -525,42 +585,30 @@ function handleAction(e){
   if(action==="cal-day"){const d=parseInt(el.dataset.d);selDay=selDay===d?null:d;render();}
 }
 
-// ── Swipe for expenses ────────────────────────────────────────────────────────
+// ─── Swipe ────────────────────────────────────────────────────────────────────
 function initSwipes(){
   document.querySelectorAll(".swipe-wrap").forEach(wrap=>{
     const content=wrap.querySelector(".swipe-content");
-    const actions=wrap.querySelector(".swipe-actions");
-    const actW=actions?actions.offsetWidth||128:128;
-    let startX=0,currentX=0,swiped=false;
-
-    content.addEventListener("touchstart",e=>{startX=e.touches[0].clientX;currentX=0;},{passive:true});
+    const ACT_W=128;
+    let startX=0,currentX=0;
+    content.addEventListener("touchstart",e=>{startX=e.touches[0].clientX;},{passive:true});
     content.addEventListener("touchmove",e=>{
       currentX=e.touches[0].clientX-startX;
-      if(currentX<0){
-        const clamped=Math.max(currentX,-actW);
-        content.style.transform=`translateX(${clamped}px)`;
-        content.style.transition="none";
-      }
+      if(currentX<0){content.style.transition="none";content.style.transform=`translateX(${Math.max(currentX,-ACT_W)}px)`;}
     },{passive:true});
     content.addEventListener("touchend",()=>{
       content.style.transition="transform .2s ease";
-      if(currentX<-actW/2){content.style.transform=`translateX(-${actW}px)`;swiped=true;}
-      else{content.style.transform="translateX(0)";swiped=false;}
+      content.style.transform=currentX<-ACT_W/2?`translateX(-${ACT_W}px)`:"translateX(0)";
     });
-    // Close swipe on tap elsewhere
-    document.addEventListener("touchstart",ev=>{
-      if(swiped&&!wrap.contains(ev.target)){content.style.transform="translateX(0)";swiped=false;}
-    },{passive:true});
   });
 }
 
-// ── Task Modal ────────────────────────────────────────────────────────────────
+// ─── Task Modal ───────────────────────────────────────────────────────────────
 let tmpSubs=[];
 function renderTaskModal(){
   tmpSubs=[];
   document.getElementById("sh-task").innerHTML=`
-  <div class="sheet-handle"></div>
-  <div class="sheet-title">NUEVA TAREA</div>
+  <div class="sheet-handle"></div><div class="sheet-title">NUEVA TAREA</div>
   <div class="fg"><div class="fg-label">Tarea *</div><input class="inp" id="t-title" placeholder="¿Qué hay que hacer?"/></div>
   <div class="fg-row">
     <div class="fg" style="flex:1"><div class="fg-label">Categoría</div>
@@ -569,12 +617,12 @@ function renderTaskModal(){
       <select class="inp" id="t-prio"><option value="alta">🔴 Alta</option><option value="media" selected>🟡 Media</option><option value="baja">🟢 Baja</option></select></div>
   </div>
   <div class="fg"><div class="fg-label">Nota (opcional)</div><textarea class="inp" id="t-note" style="height:54px" placeholder="Contexto, links..."></textarea></div>
+
   <div class="fg"><div class="fg-label">Subtareas</div>
     <div style="display:flex;gap:8px;margin-bottom:8px">
       <input class="inp" id="t-sub-inp" style="flex:1;padding:9px 12px" placeholder="Nueva subtarea..."/>
       <button class="btn btn-gold" id="t-sub-add" style="padding:0 16px;font-size:18px">+</button>
-    </div>
-    <div id="t-subs-list"></div>
+    </div><div id="t-subs-list"></div>
   </div>
   <div class="btn-row">
     <button class="btn btn-sec" onclick="closeModal('task')">Cancelar</button>
@@ -582,48 +630,42 @@ function renderTaskModal(){
   </div>`;
   document.getElementById("t-sub-add").onclick=addTmpSub;
   document.getElementById("t-sub-inp").onkeydown=e=>{if(e.key==="Enter")addTmpSub();};
-  document.getElementById("t-save").onclick=saveTask;
+  document.getElementById("t-save").onclick=()=>{
+    const title=document.getElementById("t-title").value.trim();
+    if(!title)return;
+    tasks.push({id:uid(),title,cat:document.getElementById("t-cat").value,prio:document.getElementById("t-prio").value,note:document.getElementById("t-note").value.trim(),subtasks:tmpSubs,done:false});
+    persist();closeModal("task");render();
+  };
 }
 function addTmpSub(){
   const inp=document.getElementById("t-sub-inp");
   if(!inp.value.trim())return;
   tmpSubs.push({id:uid(),title:inp.value.trim(),done:false});
-  inp.value="";renderTmpSubs();
-}
-function renderTmpSubs(){
+  inp.value="";
   document.getElementById("t-subs-list").innerHTML=tmpSubs.map(s=>`
     <div class="sub-row">
       <div style="width:6px;height:6px;border-radius:50%;background:#c8a96e;flex-shrink:0"></div>
       <div style="flex:1;font-size:13px;color:#aaa">${s.title}</div>
-      <button class="sub-del" data-sub-del="${s.id}">✕</button>
+      <button class="sub-del" onclick="tmpSubs=tmpSubs.filter(x=>x.id!=='${s.id}');document.getElementById('t-subs-list').innerHTML='';addTmpSubRefresh()">✕</button>
     </div>`).join("");
-  document.querySelectorAll("[data-sub-del]").forEach(btn=>{
-    btn.onclick=()=>{tmpSubs=tmpSubs.filter(s=>s.id!==btn.dataset.subDel);renderTmpSubs();};
-  });
 }
-function saveTask(){
-  const title=document.getElementById("t-title").value.trim();
-  if(!title)return;
-  tasks.push({id:uid(),title,cat:document.getElementById("t-cat").value,
-    prio:document.getElementById("t-prio").value,note:document.getElementById("t-note").value.trim(),
-    subtasks:tmpSubs,done:false});
-  persist();closeModal("task");render();
-}
-
-// ── Task Detail ───────────────────────────────────────────────────────────────
-function renderTaskDetail(){
-  const t=tasks.find(t=>t.id===activeTaskId);
-  if(!t)return;
-  const pc=priColor(t.prio);
-  let subsHtml=t.subtasks.map(s=>`
+window.addTmpSubRefresh=function(){
+  document.getElementById("t-subs-list").innerHTML=tmpSubs.map(s=>`
     <div class="sub-row">
-      <div class="chk${s.done?" done":""}" style="width:18px;height:18px" data-action-sub="toggle" data-tid="${t.id}" data-sid="${s.id}"><span class="chk-mark" style="font-size:8px">✓</span></div>
-      <div style="flex:1;font-size:13px;text-decoration:${s.done?"line-through":"none"};color:${s.done?"#555":"#f0ece4"}">${s.title}</div>
-      <button class="sub-del" data-action-sub="del" data-tid="${t.id}" data-sid="${s.id}">✕</button>
+      <div style="width:6px;height:6px;border-radius:50%;background:#c8a96e;flex-shrink:0"></div>
+      <div style="flex:1;font-size:13px;color:#aaa">${s.title}</div>
+      <button class="sub-del" onclick="tmpSubs=tmpSubs.filter(x=>x.id!=='${s.id}');addTmpSubRefresh()">✕</button>
     </div>`).join("");
-  document.getElementById("sh-taskdetail").innerHTML=`
-  <div class="sheet-handle"></div>
-  <div class="sheet-title">${t.title}</div>
+};
+
+// ─── Task Detail ──────────────────────────────────────────────────────────────
+function renderTaskDetail(){
+const t=tasks.find(t=>t.id===activeTaskId);if(!t)return;
+const pc=priColor(t.prio);
+const subsHtml=t.subtasks.map(s=>` <div class="sub-row"> <div class="chk${s.done?" done":""}" style="width:18px;height:18px" data-action-sub="toggle" data-tid="${t.id}" data-sid="${s.id}"><span class="chk-mark" style="font-size:8px">✓</span></div> <div style="flex:1;font-size:13px;text-decoration:${s.done?"line-through":"none"};color:${s.done?"#555":"#f0ece4"}">${s.title}</div> <button class="sub-del" data-action-sub="del" data-tid="${t.id}" data-sid="${s.id}">✕</button> </div>`).join(””);
+document.getElementById(“sh-taskdetail”).innerHTML=`
+
+  <div class="sheet-handle"></div><div class="sheet-title">${t.title}</div>
   <div style="margin-bottom:10px">${pill(TASK_CATS[t.cat]||"#94a3b8",t.cat)} ${pill(pc,priEmoji(t.prio)+" "+t.prio)}</div>
   ${t.note?`<div style="font-size:13px;color:#888;margin-bottom:14px;line-height:1.6">${t.note}</div>`:""}
   <div class="sh" style="margin-bottom:8px">SUBTAREAS</div>
@@ -638,8 +680,7 @@ function renderTaskDetail(){
     <button class="btn btn-red" id="det-del">🗑</button>
   </div>`;
   document.getElementById("det-sub-add").onclick=()=>{
-    const inp=document.getElementById("det-sub-inp");
-    if(!inp.value.trim())return;
+    const inp=document.getElementById("det-sub-inp");if(!inp.value.trim())return;
     tasks=tasks.map(tk=>tk.id===activeTaskId?{...tk,subtasks:[...tk.subtasks,{id:uid(),title:inp.value.trim(),done:false}]}:tk);
     inp.value="";persist();renderTaskDetail();render();
   };
@@ -656,20 +697,20 @@ function renderTaskDetail(){
   });
 }
 
-// ── Event Modal (create + edit) ───────────────────────────────────────────────
+// ─── Event Modal ──────────────────────────────────────────────────────────────
 function renderEventModal(editId){
-  const ev=editId?events.find(e=>e.id===editId):null;
-  let eRepeat=ev?ev.repeat:false;
-  document.getElementById("sh-event").innerHTML=`
-  <div class="sheet-handle"></div>
-  <div class="sheet-title">${ev?"EDITAR EVENTO":"NUEVO EVENTO"}</div>
+const ev=editId?events.find(e=>e.id===editId):null;
+let eRepeat=ev?ev.repeat:false;
+document.getElementById(“sh-event”).innerHTML=`
+
+  <div class="sheet-handle"></div><div class="sheet-title">${ev?"EDITAR EVENTO":"NUEVO EVENTO"}</div>
   <div class="fg"><div class="fg-label">Tipo</div>
     <select class="inp" id="e-type">${Object.entries(EV_TYPES).map(([k,v])=>`<option value="${k}"${ev&&ev.type===k?" selected":""}>${v.emoji} ${v.label}</option>`).join("")}</select></div>
   <div class="fg"><div class="fg-label">Título *</div><input class="inp" id="e-title" value="${ev?ev.title:""}" placeholder="Ej. Corte BBVA, Cumpleaños mamá..."/></div>
   <div class="fg-row">
     <div class="fg" style="flex:1"><div class="fg-label">Día *</div><input class="inp" id="e-day" type="number" min="1" max="31" value="${ev?ev.day:""}" placeholder="1–31"/></div>
     <div class="fg" style="flex:1"><div class="fg-label">Mes</div>
-      <select class="inp" id="e-month" ${eRepeat?"disabled":""}>
+      <select class="inp" id="e-month"${eRepeat?" disabled":""}>
         <option value="-1"${!ev||ev.month===-1?" selected":""}>— Todos —</option>
         ${MONTHS.map((m,i)=>`<option value="${i}"${ev&&ev.month===i?" selected":""}>${m}</option>`).join("")}
       </select></div>
@@ -678,14 +719,13 @@ function renderEventModal(editId){
   <div class="fg"><div class="fg-label">Nota (opcional)</div><textarea class="inp" id="e-note" style="height:52px" placeholder="Detalles...">${ev?ev.note:""}</textarea></div>
   <div class="toggle" id="e-repeat-toggle">
     <div class="toggle-box${eRepeat?" on":""}" id="e-repeat-box"></div>
-    <div class="toggle-lbl">🔁 Se repite cada mes</div>
+    <div style="font-size:13px">🔁 Se repite cada mes</div>
   </div>
   <div class="btn-row">
     ${ev?`<button class="btn btn-red" id="e-del">🗑 Eliminar</button>`:""}
     <button class="btn btn-sec" onclick="closeModal('event')">Cancelar</button>
     <button class="btn btn-gold" style="flex:2" id="e-save">${ev?"Guardar cambios":"Guardar"}</button>
   </div>`;
-
   document.getElementById("e-repeat-toggle").onclick=()=>{
     eRepeat=!eRepeat;
     document.getElementById("e-repeat-box").classList.toggle("on",eRepeat);
@@ -695,32 +735,25 @@ function renderEventModal(editId){
     const title=document.getElementById("e-title").value.trim();
     const day=parseInt(document.getElementById("e-day").value);
     if(!title||!day)return;
-    const updated={
-      id:ev?ev.id:uid(),title,day,
+    const updated={id:ev?ev.id:uid(),title,day,
       month:eRepeat?-1:parseInt(document.getElementById("e-month").value),
-      year:eRepeat?null:curY,
-      type:document.getElementById("e-type").value,
+      year:eRepeat?null:curY,type:document.getElementById("e-type").value,
       amount:document.getElementById("e-amt").value?parseFloat(document.getElementById("e-amt").value):null,
-      repeat:eRepeat,note:document.getElementById("e-note").value.trim()
-    };
-    if(ev) events=events.map(e=>e.id===editId?updated:e);
+      repeat:eRepeat,note:document.getElementById("e-note").value.trim()};
+    if(ev)events=events.map(e=>e.id===editId?updated:e);
     else events.push(updated);
     persist();closeModal("event");render();
   };
-  if(ev){
-    document.getElementById("e-del").onclick=()=>{
-      events=events.filter(e=>e.id!==editId);persist();closeModal("event");render();
-    };
-  }
+  if(ev)document.getElementById("e-del").onclick=()=>{events=events.filter(e=>e.id!==editId);persist();closeModal("event");render();};
 }
 
-// ── Expense Modal (create + edit) ─────────────────────────────────────────────
+// ─── Expense Modal ────────────────────────────────────────────────────────────
 function renderExpenseModal(editId){
-  const ex=editId?expenses.find(e=>e.id===editId):null;
-  const todayStr=`${TY}-${String(TM+1).padStart(2,"0")}-${String(TD).padStart(2,"0")}`;
-  document.getElementById("sh-expense").innerHTML=`
-  <div class="sheet-handle"></div>
-  <div class="sheet-title">${ex?"EDITAR GASTO":"REGISTRAR GASTO"}</div>
+const ex=editId?expenses.find(e=>e.id===editId):null;
+const todayStr=`${TY}-${String(TM+1).padStart(2,"0")}-${String(TD).padStart(2,"0")}`;
+document.getElementById(“sh-expense”).innerHTML=`
+
+  <div class="sheet-handle"></div><div class="sheet-title">${ex?"EDITAR GASTO":"REGISTRAR GASTO"}</div>
   <div class="fg"><div class="fg-label">Monto MXN *</div><input class="inp" id="x-amt" type="number" value="${ex?ex.amount:""}" placeholder="Ej. 350"/></div>
   <div class="fg-row">
     <div class="fg" style="flex:1"><div class="fg-label">Categoría</div>
@@ -736,26 +769,21 @@ function renderExpenseModal(editId){
   document.getElementById("x-save").onclick=()=>{
     const amt=parseFloat(document.getElementById("x-amt").value);
     if(!amt||isNaN(amt))return;
-    const updated={id:ex?ex.id:uid(),amount:amt,cat:document.getElementById("x-cat").value,
-      desc:document.getElementById("x-desc").value.trim(),date:document.getElementById("x-date").value};
-    if(ex) expenses=expenses.map(e=>e.id===editId?updated:e);
+    const updated={id:ex?ex.id:uid(),amount:amt,cat:document.getElementById("x-cat").value,desc:document.getElementById("x-desc").value.trim(),date:document.getElementById("x-date").value};
+    if(ex)expenses=expenses.map(e=>e.id===editId?updated:e);
     else expenses.unshift(updated);
     persist();closeModal("expense");render();
   };
-  if(ex){
-    document.getElementById("x-del").onclick=()=>{
-      expenses=expenses.filter(e=>e.id!==editId);persist();closeModal("expense");render();
-    };
-  }
+  if(ex)document.getElementById("x-del").onclick=()=>{expenses=expenses.filter(e=>e.id!==editId);persist();closeModal("expense");render();};
 }
 
-// ── Note Modal ────────────────────────────────────────────────────────────────
-let nColor="#c8a96e";
+// ─── Note Modal ───────────────────────────────────────────────────────────────
+let nColor=”#c8a96e”;
 function renderNoteModal(){
-  nColor="#c8a96e";
-  document.getElementById("sh-note").innerHTML=`
-  <div class="sheet-handle"></div>
-  <div class="sheet-title">NUEVA NOTA</div>
+nColor=”#c8a96e”;
+document.getElementById(“sh-note”).innerHTML=`
+
+  <div class="sheet-handle"></div><div class="sheet-title">NUEVA NOTA</div>
   <div class="fg"><div class="fg-label">Título (opcional)</div><input class="inp" id="n-title" placeholder="Ej. Ideas, Reflexiones..."/></div>
   <div class="fg"><div class="fg-label">Contenido</div><textarea class="inp" id="n-body" style="height:120px" placeholder="Escribe lo que sea..."></textarea></div>
   <div class="fg"><div class="fg-label">Color</div>
@@ -776,11 +804,11 @@ function renderNoteModal(){
   };
 }
 
-// ── Note Detail ───────────────────────────────────────────────────────────────
+// ─── Note Detail ──────────────────────────────────────────────────────────────
 function renderNoteDetail(){
-  const n=notes.find(n=>n.id===activeNoteId);
-  if(!n)return;
-  document.getElementById("sh-notedetail").innerHTML=`
+const n=notes.find(n=>n.id===activeNoteId);if(!n)return;
+document.getElementById(“sh-notedetail”).innerHTML=`
+
   <div class="sheet-handle"></div>
   <div class="sheet-title" style="color:${n.color}">${n.title||"Nota"}</div>
   <textarea class="inp" id="nd-body" style="min-height:200px;border-color:${n.color}44;line-height:1.7">${n.body}</textarea>
@@ -799,7 +827,11 @@ function renderNoteDetail(){
   document.getElementById("nd-del").onclick=()=>{notes=notes.filter(nx=>nx.id!==activeNoteId);persist();closeModal("notedetail");render();};
 }
 
-render();
+// ─── Init ─────────────────────────────────────────────────────────────────────
+window.closeModal = closeModal;
+syncStatus(“connecting”);
+loadFromFirebase();
 </script>
+
 </body>
 </html>
